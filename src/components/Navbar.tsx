@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,7 @@ import { Menu, X } from "lucide-react";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   // Update scroll state
   useEffect(() => {
@@ -40,6 +41,10 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
   return (
     <header
       className={cn(
@@ -64,9 +69,17 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className="px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
+              className={cn(
+                "px-3 py-2 text-sm font-medium rounded-md transition-colors relative",
+                isActive(item.path)
+                  ? "text-accurate-purple-600"
+                  : "text-gray-700 hover:bg-gray-100"
+              )}
             >
               {item.name}
+              {isActive(item.path) && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accurate-purple-600 rounded-full" />
+              )}
             </Link>
           ))}
         </nav>
@@ -106,7 +119,12 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     to={item.path}
-                    className="px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
+                    className={cn(
+                      "px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                      isActive(item.path)
+                        ? "text-accurate-purple-600 bg-accurate-purple-50"
+                        : "text-gray-700 hover:bg-gray-100"
+                    )}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
