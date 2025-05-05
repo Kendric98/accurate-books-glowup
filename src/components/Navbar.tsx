@@ -51,9 +51,11 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <span className="text-2xl font-bold bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600 bg-clip-text text-transparent">
-            MyAccurate Books
-          </span>
+          <img 
+            src="/lovable-uploads/879e1aa7-83d9-460f-9d35-b0f9949c3ceb.png" 
+            alt="MyAccurate Books Logo" 
+            className="h-12" 
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -86,9 +88,11 @@ const Navbar = () => {
           <SheetContent side="right" className="w-[240px] sm:w-[300px]">
             <div className="flex flex-col h-full">
               <div className="flex justify-between items-center py-4 border-b">
-                <span className="text-lg font-bold bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600 bg-clip-text text-transparent">
-                  MyAccurate Books
-                </span>
+                <img 
+                  src="/lovable-uploads/879e1aa7-83d9-460f-9d35-b0f9949c3ceb.png" 
+                  alt="MyAccurate Books Logo" 
+                  className="h-8" 
+                />
                 <Button
                   variant="ghost"
                   size="icon"

@@ -105,9 +105,121 @@ const FeaturesPage = () => {
         </div>
       </section>
 
-      {/* Feature Spotlight */}
+      {/* Detailed Features Section */}
       <section className="py-20 bg-gray-50">
         <div className="container">
+          <SectionHeading
+            title="Advanced Features"
+            subtitle="Take your business to the next level with these powerful tools"
+          />
+          <div className="grid md:grid-cols-2 gap-12 mb-20">
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll">
+              <h3 className="text-2xl font-bold mb-4">Dynamic Dashboard</h3>
+              <p className="text-gray-700 mb-6">
+                Get a complete overview of your business performance with customizable widgets showing sales trends, cash flow, inventory levels, and more.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Real-time data visualization</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Customizable widget layout</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Key performance indicators at a glance</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll">
+              <h3 className="text-2xl font-bold mb-4">Invoice Management</h3>
+              <p className="text-gray-700 mb-6">
+                Create and send professional invoices to your customers, track payments, and automate reminders for overdue invoices.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Professional invoice templates</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Automatic payment tracking</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Customizable reminder schedules</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll">
+              <h3 className="text-2xl font-bold mb-4">Expense Tracking</h3>
+              <p className="text-gray-700 mb-6">
+                Keep track of all your business expenses, categorize them, and attach receipts for easy tax preparation.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Receipt scanning and storage</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Expense categorization</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Tax-ready expense reports</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll">
+              <h3 className="text-2xl font-bold mb-4">Inventory Control</h3>
+              <p className="text-gray-700 mb-6">
+                Advanced inventory management with batch tracking, expiry date management, and automatic reordering.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Low stock alerts</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Batch and expiry tracking</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Barcode scanning integration</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Feature Spotlight */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <h2 className="text-3xl font-bold mb-6">Point of Sale System</h2>
@@ -131,7 +243,19 @@ const FeaturesPage = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Multiple payment method support</span>
+                  <span>Multiple payment method support including M-Pesa integration</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Receipt printing and electronic receipt options</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Customer profile integration for personalized service</span>
                 </li>
               </ul>
             </div>
@@ -173,19 +297,31 @@ const FeaturesPage = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Complete customer profiles with contact information</span>
+                  <span>Complete customer profiles with contact information and preferences</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Purchase history and payment tracking</span>
+                  <span>Detailed purchase history and payment tracking</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Customer segmentation for targeted marketing</span>
+                  <span>Customer segmentation for targeted marketing campaigns</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Custom fields for industry-specific customer information</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Loyalty program integration for repeat business</span>
                 </li>
               </ul>
             </div>
@@ -210,9 +346,23 @@ const FeaturesPage = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2">Petty Cash Management</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 mb-4">
                 Track small expenses and maintain petty cash balances with detailed logs and reports.
               </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Cash withdrawal and deposit tracking</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Expense categorization</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Reconciliation tools</span>
+                </li>
+              </ul>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 animate-on-scroll" style={{ animationDelay: "0.2s" }}>
               <div className="w-12 h-12 bg-accurate-purple-100 rounded-md flex items-center justify-center mb-4">
@@ -230,9 +380,23 @@ const FeaturesPage = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2">Payroll System</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 mb-4">
                 Calculate salaries, manage employee payments, and handle statutory deductions automatically.
               </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Tax calculation and reporting</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Employee benefits management</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Direct deposit integration</span>
+                </li>
+              </ul>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 animate-on-scroll" style={{ animationDelay: "0.4s" }}>
               <div className="w-12 h-12 bg-accurate-purple-100 rounded-md flex items-center justify-center mb-4">
@@ -241,9 +405,23 @@ const FeaturesPage = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2">Business Analytics</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 mb-4">
                 Gain deeper insights into your business performance with customizable dashboards and reports.
               </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Sales forecasting</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Profit margin analysis</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accurate-purple-600 rounded-full mr-2"></span>
+                  <span>Custom report builder</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FeatureCard } from "@/components/FeatureCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
+import { ArrowRight } from "lucide-react";
 
 const HomePage = () => {
   return (
@@ -31,10 +32,16 @@ const HomePage = () => {
                 <p className="text-sm font-medium text-gray-500 mb-3">
                   TRUSTED BY BUSINESSES ACROSS AFRICA
                 </p>
-                <div className="flex flex-wrap gap-8 items-center opacity-70">
-                  <span className="font-bold text-lg text-gray-400">Company Logo</span>
-                  <span className="font-bold text-lg text-gray-400">Company Logo</span>
-                  <span className="font-bold text-lg text-gray-400">Company Logo</span>
+                <div className="flex flex-wrap gap-8 items-center">
+                  <div className="bg-white shadow-sm rounded p-2 opacity-80 hover:opacity-100 transition-opacity">
+                    <span className="font-medium text-gray-600">Nairobi Crafts</span>
+                  </div>
+                  <div className="bg-white shadow-sm rounded p-2 opacity-80 hover:opacity-100 transition-opacity">
+                    <span className="font-medium text-gray-600">Tech Solutions Ltd</span>
+                  </div>
+                  <div className="bg-white shadow-sm rounded p-2 opacity-80 hover:opacity-100 transition-opacity">
+                    <span className="font-medium text-gray-600">Coastal Supplies</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -168,6 +175,84 @@ const HomePage = () => {
           <div className="mt-12 text-center">
             <Button size="lg" asChild>
               <Link to="/pricing">Get Started Today</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* New Business Benefits Section */}
+      <section className="py-20">
+        <div className="container">
+          <SectionHeading
+            title="Benefits for Your Business"
+            subtitle="Discover how MyAccurate Books can transform your financial management"
+          />
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <ul className="space-y-6">
+                <li className="flex animate-on-scroll">
+                  <div className="mr-4 flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-accurate-purple-100 flex items-center justify-center text-accurate-purple-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Save Time</h3>
+                    <p className="text-gray-600">Automate repetitive financial tasks and reduce manual data entry by up to 60%, giving you more time to focus on growing your business.</p>
+                  </div>
+                </li>
+                <li className="flex animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+                  <div className="mr-4 flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-accurate-purple-100 flex items-center justify-center text-accurate-purple-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Reduce Errors</h3>
+                    <p className="text-gray-600">Eliminate common accounting mistakes with automatic calculations and data validation that ensures your financial records are always accurate.</p>
+                  </div>
+                </li>
+                <li className="flex animate-on-scroll" style={{ animationDelay: "0.4s" }}>
+                  <div className="mr-4 flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-accurate-purple-100 flex items-center justify-center text-accurate-purple-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Make Better Decisions</h3>
+                    <p className="text-gray-600">Gain real-time insights into your business performance with comprehensive financial reports and dashboards that help you make informed decisions.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="order-1 md:order-2 relative animate-on-scroll">
+              <div className="absolute inset-0 bg-gradient-to-r from-accurate-blue-200 to-accurate-purple-200 rounded-lg transform -rotate-2"></div>
+              <div className="bg-white rounded-lg shadow-xl overflow-hidden border border-gray-100 relative">
+                <img
+                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="Business owner using MyAccurate Books"
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-accurate-blue-600 text-white rounded-lg p-4 shadow-lg">
+                <p className="font-bold">Trusted by 1000+ SMEs</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-16 text-center">
+            <Button size="lg" variant="default" className="gap-2" asChild>
+              <Link to="/about">
+                Learn More About Us <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
