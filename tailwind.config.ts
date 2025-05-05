@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors
+				// MyAccurate Books brand colors
 				'accurate-purple': {
 					50: '#f5f3ff',
 					100: '#ede9fe',
@@ -90,8 +90,14 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Montserrat', 'sans-serif'],
-				heading: ['Playfair Display', 'serif'],
+				// Update font family based on the design instructions
+				sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+				heading: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+				// Alternative option
+				alt: {
+					heading: ['Montserrat', 'system-ui', 'sans-serif'],
+					body: ['Open Sans', 'Lato', 'system-ui', 'sans-serif'],
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

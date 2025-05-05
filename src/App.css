@@ -1,42 +1,50 @@
+
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Button styling */
+.btn {
+  @apply bg-accurate-purple-600 text-white px-4 py-2 rounded hover:bg-accurate-purple-700 transition-colors;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-secondary {
+  @apply bg-accurate-blue-500 text-white px-4 py-2 rounded hover:bg-accurate-blue-600 transition-colors;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.btn-outline {
+  @apply border border-accurate-purple-600 text-accurate-purple-600 px-4 py-2 rounded hover:bg-accurate-purple-50 transition-colors;
 }
 
-.card {
-  padding: 2em;
+/* Section styling */
+.section {
+  @apply py-16 px-4 md:py-24;
 }
 
-.read-the-docs {
-  color: #888;
+.section-alt {
+  @apply bg-gray-50 py-16 px-4 md:py-24;
+}
+
+/* Card styling */
+.card-accent {
+  @apply bg-white p-6 rounded-lg shadow-md border-t-4 border-accurate-purple-500;
+}
+
+/* Typography utilities */
+.heading-xl {
+  @apply text-4xl md:text-5xl lg:text-6xl font-heading font-bold;
+}
+
+.heading-lg {
+  @apply text-3xl md:text-4xl font-heading font-semibold;
+}
+
+.heading-md {
+  @apply text-2xl md:text-3xl font-heading font-semibold;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600;
 }
