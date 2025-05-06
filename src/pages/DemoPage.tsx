@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +12,7 @@ import {
   DialogTrigger,
   DialogDescription
 } from "@/components/ui/dialog";
-import SectionHeading from "@/components/SectionHeading";
+import { SectionHeading } from "@/components/SectionHeading";
 
 const DemoPage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -48,7 +47,7 @@ const DemoPage = () => {
           <SectionHeading
             title="Interactive Demos & Resources"
             subtitle="Explore our collection of resources designed to help you get the most out of MyAccurate Books"
-            align="center"
+            alignment="center"
           />
           
           <div className="grid md:grid-cols-3 gap-8 mt-12">
@@ -128,7 +127,7 @@ const DemoPage = () => {
           <SectionHeading
             title="Learning Paths"
             subtitle="Follow our structured learning paths to become a MyAccurate Books expert"
-            align="center"
+            alignment="center"
           />
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
@@ -271,7 +270,7 @@ const DemoPage = () => {
           <SectionHeading
             title="Frequently Asked Questions"
             subtitle="Have questions about our demo process? Find answers to common queries below"
-            align="center"
+            alignment="center"
           />
           
           <div className="mt-12 space-y-6">
