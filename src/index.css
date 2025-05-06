@@ -128,4 +128,8 @@
   .brand-card {
     @apply bg-white border border-accurate-blue-100 shadow-sm hover:shadow-md hover:border-accurate-blue-200 transition-all duration-300 rounded-xl overflow-hidden;
   }
+  
+  .sunset-card {
+    @apply bg-white border border-accurate-orange-100 shadow-sm hover:shadow-md hover:border-accurate-orange-200 transition-all duration-300 rounded-xl overflow-hidden;
+  }
 }

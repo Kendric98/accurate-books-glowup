@@ -22,6 +22,10 @@
   @apply border border-accurate-blue-500 text-accurate-blue-500 px-4 py-2 rounded hover:bg-accurate-blue-50 hover:border-accurate-blue-600 hover:text-accurate-blue-600 transition-colors;
 }
 
+.btn-outline-sunset {
+  @apply border border-accurate-orange-400 text-accurate-orange-500 px-4 py-2 rounded hover:bg-accurate-yellow-50 hover:border-accurate-orange-500 hover:text-accurate-orange-600 transition-colors;
+}
+
 /* Section styling */
 .section {
   @apply py-16 px-4 md:py-24;
@@ -39,13 +43,25 @@
   @apply bg-gradient-to-r from-accurate-yellow-400 to-accurate-orange-400 text-accurate-purple-800 py-16 px-4 md:py-24;
 }
 
+.section-sunset-light {
+  @apply bg-gradient-to-br from-accurate-yellow-50 via-accurate-yellow-100 to-accurate-orange-50 py-16 px-4 md:py-24;
+}
+
 /* Card styling */
 .card-accent {
   @apply bg-white p-6 rounded-lg shadow-md border-t-4 border-accurate-blue-500 hover:shadow-lg transition-shadow;
 }
 
+.card-accent-sunset {
+  @apply bg-white p-6 rounded-lg shadow-md border-t-4 border-accurate-orange-400 hover:shadow-lg transition-shadow;
+}
+
 .card-brand {
   @apply brand-card p-6;
+}
+
+.card-sunset {
+  @apply sunset-card p-6;
 }
 
 /* Typography utilities */
@@ -86,11 +102,31 @@
   @apply bg-accurate-blue-50;
 }
 
+.sunset-table th {
+  @apply p-4 text-left font-bold bg-accurate-yellow-50 border-b-2 border-accurate-orange-200;
+}
+
+.sunset-table td {
+  @apply p-4 border-b border-gray-200;
+}
+
+.sunset-table tr:hover {
+  @apply bg-accurate-yellow-50;
+}
+
 /* Feature card styling */
 .feature-card {
   @apply p-6 rounded-xl transition-all duration-300 brand-card;
 }
 
+.feature-card-sunset {
+  @apply p-6 rounded-xl transition-all duration-300 sunset-card;
+}
+
 .feature-icon {
   @apply text-accurate-blue-500 mb-4 p-3 bg-accurate-blue-50 rounded-full inline-flex;
+}
+
+.feature-icon-sunset {
+  @apply text-accurate-orange-500 mb-4 p-3 bg-accurate-yellow-50 rounded-full inline-flex;
 }
