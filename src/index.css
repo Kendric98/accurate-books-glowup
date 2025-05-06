@@ -16,24 +16,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 204 83% 45%;
+    --primary: 260 84% 57%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 242 56% 44%;
+    --secondary: 240 5.9% 10%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 48 100% 67%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 260 84% 57%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 204 83% 45%;
+    --ring: 260 84% 57%;
 
     --radius: 0.5rem;
 
@@ -89,7 +89,7 @@
   }
 
   a {
-    @apply text-accurate-blue-500 hover:text-accurate-blue-700 transition-colors;
+    @apply text-accurate-purple-600 hover:text-accurate-purple-700 transition-colors;
   }
 }
 
@@ -110,26 +110,14 @@
   }
   
   .brand-gradient {
-    @apply bg-gradient-to-r from-accurate-blue-500 via-accurate-blue-700 to-accurate-purple-700;
-  }
-  
-  .brand-gradient-sunset {
-    @apply bg-gradient-to-r from-accurate-yellow-400 to-accurate-orange-400;
+    @apply bg-gradient-to-r from-accurate-purple-600 via-accurate-purple-500 to-accurate-blue-500;
   }
   
   .brand-gradient-text {
-    @apply bg-gradient-to-r from-accurate-blue-500 via-accurate-blue-700 to-accurate-purple-700 bg-clip-text text-transparent;
-  }
-
-  .brand-gradient-text-sunset {
-    @apply bg-gradient-to-r from-accurate-yellow-400 to-accurate-orange-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accurate-purple-600 via-accurate-purple-500 to-accurate-blue-500 bg-clip-text text-transparent;
   }
   
   .brand-card {
-    @apply bg-white border border-accurate-blue-100 shadow-sm hover:shadow-md hover:border-accurate-blue-200 transition-all duration-300 rounded-xl overflow-hidden;
-  }
-  
-  .sunset-card {
-    @apply bg-white border border-accurate-orange-100 shadow-sm hover:shadow-md hover:border-accurate-orange-200 transition-all duration-300 rounded-xl overflow-hidden;
+    @apply bg-white border border-accurate-purple-100 shadow-sm hover:shadow-md hover:border-accurate-purple-200 transition-all duration-300 rounded-xl overflow-hidden;
   }
 }

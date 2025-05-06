@@ -10,18 +10,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-accurate-blue-500 text-white hover:bg-accurate-blue-600 shadow-sm hover:shadow",
+        default: "bg-accurate-purple-600 text-white hover:bg-accurate-purple-700 shadow-sm hover:shadow",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border-2 border-accurate-blue-500 text-accurate-blue-500 bg-transparent hover:bg-accurate-blue-50 hover:text-accurate-blue-600",
+          "border-2 border-accurate-purple-600 text-accurate-purple-600 bg-transparent hover:bg-accurate-purple-50 hover:text-accurate-purple-700",
         secondary:
-          "bg-accurate-purple-700 text-white hover:bg-accurate-purple-800 shadow-sm hover:shadow",
-        ghost: "hover:bg-accurate-blue-50 hover:text-accurate-blue-500",
-        link: "text-accurate-blue-500 underline-offset-4 hover:underline",
-        gradient: "bg-gradient-to-r from-accurate-blue-500 to-accurate-purple-700 text-white hover:from-accurate-blue-600 hover:to-accurate-purple-800 shadow-sm hover:shadow",
-        sunset: "bg-accurate-yellow-400 text-accurate-purple-800 hover:bg-accurate-orange-400 shadow-sm hover:shadow",
-        "sunset-gradient": "bg-gradient-to-r from-accurate-yellow-400 to-accurate-orange-400 text-accurate-purple-800 hover:from-accurate-yellow-500 hover:to-accurate-orange-500 shadow-sm hover:shadow",
+          "bg-accurate-blue-500 text-white hover:bg-accurate-blue-600 shadow-sm hover:shadow",
+        ghost: "hover:bg-accurate-purple-50 hover:text-accurate-purple-600",
+        link: "text-accurate-purple-600 underline-offset-4 hover:underline",
+        gradient: "bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600 text-white hover:from-accurate-purple-700 hover:to-accurate-blue-700 shadow-sm hover:shadow",
       },
       size: {
         default: "h-10 px-4 py-2",
