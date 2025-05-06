@@ -1,37 +1,25 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { BookOpen, Video, Play } from "lucide-react";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogTrigger,
-  DialogDescription
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { SectionHeading } from "@/components/SectionHeading";
-
 const DemoPage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // In a real implementation, this would send the form data to a backend
     setFormSubmitted(true);
     setTimeout(() => setFormSubmitted(false), 5000);
   };
-  
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-gray-50 to-white py-20">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="heading-lg mb-4 text-gradient">
+            <h1 className="heading-lg mb-4 text-gradient text-5xl">
               Experience MyAccurate Books in Action
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -45,11 +33,7 @@ const DemoPage = () => {
       {/* Demo Resources Section */}
       <section className="section">
         <div className="container">
-          <SectionHeading
-            title="Interactive Demos & Resources"
-            subtitle="Explore our collection of resources designed to help you get the most out of MyAccurate Books"
-            alignment="center"
-          />
+          <SectionHeading title="Interactive Demos & Resources" subtitle="Explore our collection of resources designed to help you get the most out of MyAccurate Books" alignment="center" />
           
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {/* Video Demo Card */}
@@ -125,45 +109,35 @@ const DemoPage = () => {
       {/* Learning Paths Section */}
       <section className="section-alt">
         <div className="container">
-          <SectionHeading
-            title="Learning Paths"
-            subtitle="Follow our structured learning paths to become a MyAccurate Books expert"
-            alignment="center"
-          />
+          <SectionHeading title="Learning Paths" subtitle="Follow our structured learning paths to become a MyAccurate Books expert" alignment="center" />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 my-0 py-[30px]">
             {/* Learning Path Items */}
-            {[
-              {
-                title: "Getting Started",
-                description: "Setup your account, import data, and configure basic settings",
-                level: "Beginner",
-                duration: "1 hour",
-                color: "accurate-blue"
-              },
-              {
-                title: "Daily Operations",
-                description: "Learn how to handle day-to-day tasks like invoicing and expense tracking",
-                level: "Beginner",
-                duration: "2 hours",
-                color: "accurate-purple"
-              },
-              {
-                title: "Financial Reporting",
-                description: "Master financial statements, custom reports, and insights",
-                level: "Intermediate",
-                duration: "1.5 hours",
-                color: "accurate-blue"
-              },
-              {
-                title: "Advanced Features",
-                description: "Explore advanced functionality for business optimization",
-                level: "Advanced",
-                duration: "2.5 hours",
-                color: "accurate-purple"
-              }
-            ].map((path, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            {[{
+            title: "Getting Started",
+            description: "Setup your account, import data, and configure basic settings",
+            level: "Beginner",
+            duration: "1 hour",
+            color: "accurate-blue"
+          }, {
+            title: "Daily Operations",
+            description: "Learn how to handle day-to-day tasks like invoicing and expense tracking",
+            level: "Beginner",
+            duration: "2 hours",
+            color: "accurate-purple"
+          }, {
+            title: "Financial Reporting",
+            description: "Master financial statements, custom reports, and insights",
+            level: "Intermediate",
+            duration: "1.5 hours",
+            color: "accurate-blue"
+          }, {
+            title: "Advanced Features",
+            description: "Explore advanced functionality for business optimization",
+            level: "Advanced",
+            duration: "2.5 hours",
+            color: "accurate-purple"
+          }].map((path, index) => <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow my-[30px] py-[25px]">
                 <h3 className="text-lg font-semibold mb-3">{path.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{path.description}</p>
                 <div className="flex justify-between text-sm mb-4">
@@ -173,8 +147,7 @@ const DemoPage = () => {
                   <span className="text-gray-500">{path.duration}</span>
                 </div>
                 <Button variant="link" className="p-0 h-auto">Start Learning →</Button>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -183,9 +156,9 @@ const DemoPage = () => {
       <section className="section">
         <div className="container max-w-6xl">
           <div className="bg-gradient-to-br from-accurate-purple-600 to-accurate-blue-600 rounded-2xl overflow-hidden shadow-xl">
-            <div className="grid md:grid-cols-5 gap-0">
+            <div className="grid md:grid-cols-5 gap-0 py-0 my-[25px] mx-[13px] rounded-md">
               {/* Image/Graphic Side */}
-              <div className="md:col-span-2 bg-accurate-purple-700 p-10 flex items-center">
+              <div className="md:col-span-2 bg-accurate-purple-700 p-10 flex items-center my-0">
                 <div className="text-white">
                   <h2 className="text-3xl font-bold mb-6">Get a Personalized Demo</h2>
                   <ul className="space-y-4">
@@ -213,16 +186,13 @@ const DemoPage = () => {
               <div className="md:col-span-3 bg-white p-8 md:p-10">
                 <h3 className="text-2xl font-semibold mb-6">Schedule Your Free Demo</h3>
                 
-                {formSubmitted ? (
-                  <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-8 rounded-lg text-center">
+                {formSubmitted ? <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-8 rounded-lg text-center">
                     <svg className="mx-auto h-12 w-12 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <h4 className="text-lg font-semibold mb-2">Demo Request Submitted!</h4>
                     <p>Our team will contact you within 1 business day to schedule your personalized demo.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  </div> : <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid md:grid-cols-2 gap-5">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name</Label>
@@ -247,18 +217,13 @@ const DemoPage = () => {
                     
                     <div className="space-y-2">
                       <Label htmlFor="message">What are your specific interests?</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="Tell us about your business and what you're looking for..." 
-                        rows={4}
-                      />
+                      <Textarea id="message" placeholder="Tell us about your business and what you're looking for..." rows={4} />
                     </div>
                     
                     <Button type="submit" size="lg" className="w-full md:w-auto">
                       Book My Free Demo
                     </Button>
-                  </form>
-                )}
+                  </form>}
               </div>
             </div>
           </div>
@@ -268,45 +233,31 @@ const DemoPage = () => {
       {/* FAQ Section */}
       <section className="section-alt">
         <div className="container max-w-4xl">
-          <SectionHeading
-            title="Frequently Asked Questions"
-            subtitle="Have questions about our demo process? Find answers to common queries below"
-            alignment="center"
-          />
+          <SectionHeading title="Frequently Asked Questions" subtitle="Have questions about our demo process? Find answers to common queries below" alignment="center" />
           
           <div className="mt-12 space-y-6">
-            {[
-              {
-                question: "How long does the demo usually take?",
-                answer: "Our personalized demos typically last 30-45 minutes, including time for questions. We can adjust the length based on your availability and requirements."
-              },
-              {
-                question: "Who should attend the demo session?",
-                answer: "We recommend including decision-makers and team members who will be using the software regularly, such as financial staff, accountants, or business owners."
-              },
-              {
-                question: "Can I request specific features to be demonstrated?",
-                answer: "Absolutely! We encourage you to let us know your specific interests so we can tailor the demo to focus on the features most relevant to your business needs."
-              },
-              {
-                question: "Is there any follow-up after the demo?",
-                answer: "Yes, we provide a demo recap email with helpful resources and your personal account manager will follow up to answer any additional questions you may have."
-              },
-              {
-                question: "How soon can I start using the software after the demo?",
-                answer: "You can start using MyAccurate Books immediately after the demo. We offer a free trial period and can provide onboarding assistance to help you get set up quickly."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow">
+            {[{
+            question: "How long does the demo usually take?",
+            answer: "Our personalized demos typically last 30-45 minutes, including time for questions. We can adjust the length based on your availability and requirements."
+          }, {
+            question: "Who should attend the demo session?",
+            answer: "We recommend including decision-makers and team members who will be using the software regularly, such as financial staff, accountants, or business owners."
+          }, {
+            question: "Can I request specific features to be demonstrated?",
+            answer: "Absolutely! We encourage you to let us know your specific interests so we can tailor the demo to focus on the features most relevant to your business needs."
+          }, {
+            question: "Is there any follow-up after the demo?",
+            answer: "Yes, we provide a demo recap email with helpful resources and your personal account manager will follow up to answer any additional questions you may have."
+          }, {
+            question: "How soon can I start using the software after the demo?",
+            answer: "You can start using MyAccurate Books immediately after the demo. We offer a free trial period and can provide onboarding assistance to help you get set up quickly."
+          }].map((faq, index) => <div key={index} className="bg-white p-6 rounded-lg shadow">
                 <h4 className="text-lg font-semibold mb-2">{faq.question}</h4>
                 <p className="text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default DemoPage;
