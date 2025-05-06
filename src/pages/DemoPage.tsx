@@ -1,0 +1,312 @@
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { BookOpen, Video, Play } from "lucide-react";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogTrigger,
+  DialogDescription
+} from "@/components/ui/dialog";
+import SectionHeading from "@/components/SectionHeading";
+
+const DemoPage = () => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real implementation, this would send the form data to a backend
+    setFormSubmitted(true);
+    setTimeout(() => setFormSubmitted(false), 5000);
+  };
+  
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+        <div className="container max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h1 className="heading-lg mb-4 text-gradient">
+              Experience MyAccurate Books in Action
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover how our accounting software can transform your business finances through 
+              interactive demos, tutorials, and personalized onboarding sessions.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Demo Resources Section */}
+      <section className="section">
+        <div className="container">
+          <SectionHeading
+            title="Interactive Demos & Resources"
+            subtitle="Explore our collection of resources designed to help you get the most out of MyAccurate Books"
+            align="center"
+          />
+          
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            {/* Video Demo Card */}
+            <div className="card-accent hover:shadow-lg transition-shadow">
+              <div className="flex flex-col h-full">
+                <div className="bg-accurate-purple-50 p-4 rounded-md mb-4 inline-flex">
+                  <Video className="h-8 w-8 text-accurate-purple-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Product Demo</h3>
+                <p className="text-gray-600 mb-6 flex-grow">
+                  Watch our comprehensive product demo to see all features in action, from invoicing to financial reporting.
+                </p>
+                
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="default" className="w-full">
+                      <Play className="mr-2 h-4 w-4" /> Watch Demo
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-3xl">
+                    <DialogHeader>
+                      <DialogTitle>MyAccurate Books Product Demo</DialogTitle>
+                      <DialogDescription>
+                        A comprehensive walkthrough of our accounting software
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="aspect-video bg-gray-100 rounded-md flex items-center justify-center">
+                      <div className="text-center p-8">
+                        <Play className="mx-auto h-16 w-16 text-accurate-purple-400 mb-4" />
+                        <p className="text-gray-500">Demo video would play here</p>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
+            
+            {/* Tutorials Card */}
+            <div className="card-accent hover:shadow-lg transition-shadow">
+              <div className="flex flex-col h-full">
+                <div className="bg-accurate-purple-50 p-4 rounded-md mb-4 inline-flex">
+                  <BookOpen className="h-8 w-8 text-accurate-purple-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Tutorials & Guides</h3>
+                <p className="text-gray-600 mb-6 flex-grow">
+                  Step-by-step tutorials to help you master every aspect of MyAccurate Books, from setup to advanced features.
+                </p>
+                <Button variant="outline" className="w-full">
+                  <BookOpen className="mr-2 h-4 w-4" /> Browse Tutorials
+                </Button>
+              </div>
+            </div>
+            
+            {/* Live Demo Card */}
+            <div className="card-accent hover:shadow-lg transition-shadow">
+              <div className="flex flex-col h-full">
+                <div className="bg-accurate-purple-50 p-4 rounded-md mb-4 inline-flex">
+                  <Play className="h-8 w-8 text-accurate-purple-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Live Demo Account</h3>
+                <p className="text-gray-600 mb-6 flex-grow">
+                  Access a sandbox environment with sample data to explore the software at your own pace.
+                </p>
+                <Button variant="secondary" className="w-full">
+                  Access Demo Account
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Learning Paths Section */}
+      <section className="section-alt">
+        <div className="container">
+          <SectionHeading
+            title="Learning Paths"
+            subtitle="Follow our structured learning paths to become a MyAccurate Books expert"
+            align="center"
+          />
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {/* Learning Path Items */}
+            {[
+              {
+                title: "Getting Started",
+                description: "Setup your account, import data, and configure basic settings",
+                level: "Beginner",
+                duration: "1 hour",
+                color: "accurate-blue"
+              },
+              {
+                title: "Daily Operations",
+                description: "Learn how to handle day-to-day tasks like invoicing and expense tracking",
+                level: "Beginner",
+                duration: "2 hours",
+                color: "accurate-purple"
+              },
+              {
+                title: "Financial Reporting",
+                description: "Master financial statements, custom reports, and insights",
+                level: "Intermediate",
+                duration: "1.5 hours",
+                color: "accurate-blue"
+              },
+              {
+                title: "Advanced Features",
+                description: "Explore advanced functionality for business optimization",
+                level: "Advanced",
+                duration: "2.5 hours",
+                color: "accurate-purple"
+              }
+            ].map((path, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-semibold mb-3">{path.title}</h3>
+                <p className="text-gray-600 text-sm mb-4">{path.description}</p>
+                <div className="flex justify-between text-sm mb-4">
+                  <span className={`px-2 py-1 rounded-full bg-${path.color}-50 text-${path.color}-700`}>
+                    {path.level}
+                  </span>
+                  <span className="text-gray-500">{path.duration}</span>
+                </div>
+                <Button variant="link" className="p-0 h-auto">Start Learning →</Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Book a Demo Section */}
+      <section className="section">
+        <div className="container max-w-6xl">
+          <div className="bg-gradient-to-br from-accurate-purple-600 to-accurate-blue-600 rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid md:grid-cols-5 gap-0">
+              {/* Image/Graphic Side */}
+              <div className="md:col-span-2 bg-accurate-purple-700 p-10 flex items-center">
+                <div className="text-white">
+                  <h2 className="text-3xl font-bold mb-6">Get a Personalized Demo</h2>
+                  <ul className="space-y-4">
+                    <li className="flex items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
+                      <span>Customized to your business needs</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
+                      <span>Personal Q&A session</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
+                      <span>Implementation guidance</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
+                      <span>Free onboarding support</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              {/* Form Side */}
+              <div className="md:col-span-3 bg-white p-8 md:p-10">
+                <h3 className="text-2xl font-semibold mb-6">Schedule Your Free Demo</h3>
+                
+                {formSubmitted ? (
+                  <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-8 rounded-lg text-center">
+                    <svg className="mx-auto h-12 w-12 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4 className="text-lg font-semibold mb-2">Demo Request Submitted!</h4>
+                    <p>Our team will contact you within 1 business day to schedule your personalized demo.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Full Name</Label>
+                        <Input id="name" placeholder="Your name" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input id="email" type="email" placeholder="your@email.com" required />
+                      </div>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <Label htmlFor="company">Company Name</Label>
+                        <Input id="company" placeholder="Your company" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input id="phone" placeholder="Your phone number" />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="message">What are your specific interests?</Label>
+                      <Textarea 
+                        id="message" 
+                        placeholder="Tell us about your business and what you're looking for..." 
+                        rows={4}
+                      />
+                    </div>
+                    
+                    <Button type="submit" size="lg" className="w-full md:w-auto">
+                      Book My Free Demo
+                    </Button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* FAQ Section */}
+      <section className="section-alt">
+        <div className="container max-w-4xl">
+          <SectionHeading
+            title="Frequently Asked Questions"
+            subtitle="Have questions about our demo process? Find answers to common queries below"
+            align="center"
+          />
+          
+          <div className="mt-12 space-y-6">
+            {[
+              {
+                question: "How long does the demo usually take?",
+                answer: "Our personalized demos typically last 30-45 minutes, including time for questions. We can adjust the length based on your availability and requirements."
+              },
+              {
+                question: "Who should attend the demo session?",
+                answer: "We recommend including decision-makers and team members who will be using the software regularly, such as financial staff, accountants, or business owners."
+              },
+              {
+                question: "Can I request specific features to be demonstrated?",
+                answer: "Absolutely! We encourage you to let us know your specific interests so we can tailor the demo to focus on the features most relevant to your business needs."
+              },
+              {
+                question: "Is there any follow-up after the demo?",
+                answer: "Yes, we provide a demo recap email with helpful resources and your personal account manager will follow up to answer any additional questions you may have."
+              },
+              {
+                question: "How soon can I start using the software after the demo?",
+                answer: "You can start using MyAccurate Books immediately after the demo. We offer a free trial period and can provide onboarding assistance to help you get set up quickly."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow">
+                <h4 className="text-lg font-semibold mb-2">{faq.question}</h4>
+                <p className="text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default DemoPage;

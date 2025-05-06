@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mail } from "lucide-react";
+import { Mail, BookOpen, Video, Play } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -42,9 +42,11 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-1">
             <div className="mb-6">
               <Link to="/" className="inline-block">
-                <span className="text-2xl font-bold bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600 bg-clip-text text-transparent">
-                  MyAccurate Books
-                </span>
+                <img 
+                  src="/lovable-uploads/879e1aa7-83d9-460f-9d35-b0f9949c3ceb.png" 
+                  alt="MyAccurate Books Logo" 
+                  className="h-12 w-auto"
+                />
               </Link>
             </div>
             <p className="text-gray-600 mb-4">
@@ -80,7 +82,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li><Link to="/features" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Features</Link></li>
               <li><Link to="/pricing" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Pricing</Link></li>
-              <li><a href="#" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Integration</a></li>
+              <li><Link to="/demo" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Demo & Resources</Link></li>
               <li><a href="#" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Updates</a></li>
             </ul>
           </div>
@@ -90,8 +92,8 @@ const Footer = () => {
             <h4 className="font-semibold text-sm uppercase text-gray-500 mb-4">Resources</h4>
             <ul className="space-y-3">
               <li><Link to="/blog" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Blog</Link></li>
+              <li><Link to="/demo" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Tutorials</Link></li>
               <li><a href="#" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Guides</a></li>
               <li><a href="#" className="text-gray-600 hover:text-accurate-purple-600 transition-colors">Webinars</a></li>
             </ul>
           </div>
