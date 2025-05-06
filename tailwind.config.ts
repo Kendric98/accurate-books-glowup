@@ -63,31 +63,55 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// MyAccurate Books brand colors
-				'accurate-purple': {
-					50: '#f5f3ff',
-					100: '#ede9fe',
-					200: '#ddd6fe',
-					300: '#c4b5fd',
-					400: '#a78bfa',
-					500: '#8b5cf6',
-					600: '#7c3aed',
-					700: '#6d28d9',
-					800: '#5b21b6',
-					900: '#4c1d95',
-				},
+				// MyAccurate Books brand colors (updated)
 				'accurate-blue': {
-					50: '#eff6ff',
-					100: '#dbeafe',
-					200: '#bfdbfe',
-					300: '#93c5fd',
-					400: '#60a5fa',
-					500: '#3b82f6',
-					600: '#2563eb',
-					700: '#1d4ed8',
-					800: '#1e40af',
-					900: '#1e3a8a',
-				}
+					50: '#e6f4fb',
+					100: '#cce9f7',
+					200: '#99d3ef',
+					300: '#66bde7',
+					400: '#33a7df',
+					500: '#1388cd', // primary blue
+					600: '#106da4',
+					700: '#0d517b',
+					800: '#093652',
+					900: '#061b29',
+				},
+				'accurate-purple': {
+					50: '#eaeaff',
+					100: '#d5d5ff',
+					200: '#aaaaff',
+					300: '#8080ff',
+					400: '#5555ff',
+					500: '#4646d4',
+					600: '#3939aa',
+					700: '#2d32b2', // secondary blue
+					800: '#1c1c66',
+					900: '#0e0e33',
+				},
+				'accurate-yellow': {
+					50: '#fffce3',
+					100: '#fff9c7',
+					200: '#fff38f',
+					300: '#ffec57',
+					400: '#ffe25a', // primary yellow
+					500: '#ffcb28',
+					600: '#cca020',
+					700: '#997818',
+					800: '#665010',
+					900: '#332808',
+				},
+				'accurate-orange': {
+					50: '#fff5eb',
+					100: '#ffebd7',
+					200: '#ffd7af',
+					300: '#ffc387',
+					400: '#ffa753', // secondary orange
+					500: '#ff8c21',
+					600: '#cc701a',
+					700: '#995414',
+					800: '#66380d',
+					900: '#331c07',
+				},
 			},
 			fontFamily: {
 				// Update font family based on the design instructions
