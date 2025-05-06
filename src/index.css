@@ -25,8 +25,8 @@
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 260 84% 57%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -107,5 +107,17 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .brand-gradient {
+    @apply bg-gradient-to-r from-accurate-purple-600 via-accurate-purple-500 to-accurate-blue-500;
+  }
+  
+  .brand-gradient-text {
+    @apply bg-gradient-to-r from-accurate-purple-600 via-accurate-purple-500 to-accurate-blue-500 bg-clip-text text-transparent;
+  }
+  
+  .brand-card {
+    @apply bg-white border border-accurate-purple-100 shadow-sm hover:shadow-md hover:border-accurate-purple-200 transition-all duration-300 rounded-xl overflow-hidden;
   }
 }

@@ -7,15 +7,15 @@
 
 /* Button styling */
 .btn {
-  @apply bg-accurate-purple-600 text-white px-4 py-2 rounded hover:bg-accurate-purple-700 transition-colors;
+  @apply bg-accurate-purple-600 text-white px-4 py-2 rounded hover:bg-accurate-purple-700 transition-colors shadow-sm hover:shadow;
 }
 
 .btn-secondary {
-  @apply bg-accurate-blue-500 text-white px-4 py-2 rounded hover:bg-accurate-blue-600 transition-colors;
+  @apply bg-accurate-blue-500 text-white px-4 py-2 rounded hover:bg-accurate-blue-600 transition-colors shadow-sm hover:shadow;
 }
 
 .btn-outline {
-  @apply border border-accurate-purple-600 text-accurate-purple-600 px-4 py-2 rounded hover:bg-accurate-purple-50 transition-colors;
+  @apply border border-accurate-purple-600 text-accurate-purple-600 px-4 py-2 rounded hover:bg-accurate-purple-50 hover:border-accurate-purple-700 hover:text-accurate-purple-700 transition-colors;
 }
 
 /* Section styling */
@@ -24,12 +24,20 @@
 }
 
 .section-alt {
-  @apply bg-gray-50 py-16 px-4 md:py-24;
+  @apply bg-gradient-to-br from-accurate-purple-50 to-white py-16 px-4 md:py-24;
+}
+
+.section-brand {
+  @apply bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600 text-white py-16 px-4 md:py-24;
 }
 
 /* Card styling */
 .card-accent {
-  @apply bg-white p-6 rounded-lg shadow-md border-t-4 border-accurate-purple-500;
+  @apply bg-white p-6 rounded-lg shadow-md border-t-4 border-accurate-purple-500 hover:shadow-lg transition-shadow;
+}
+
+.card-brand {
+  @apply brand-card p-6;
 }
 
 /* Typography utilities */
@@ -46,5 +54,31 @@
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600;
+  @apply brand-gradient-text;
+}
+
+/* Table styling */
+.branded-table {
+  @apply w-full border-collapse;
+}
+
+.branded-table th {
+  @apply p-4 text-left font-bold bg-accurate-purple-50 border-b-2 border-accurate-purple-200;
+}
+
+.branded-table td {
+  @apply p-4 border-b border-gray-200;
+}
+
+.branded-table tr:hover {
+  @apply bg-accurate-purple-50;
+}
+
+/* Feature card styling */
+.feature-card {
+  @apply p-6 rounded-xl transition-all duration-300 brand-card;
+}
+
+.feature-icon {
+  @apply text-accurate-purple-600 mb-4 p-3 bg-accurate-purple-50 rounded-full inline-flex;
 }
