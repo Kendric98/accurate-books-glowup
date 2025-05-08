@@ -8,7 +8,22 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,19 +46,43 @@ const Navbar = () => {
     };
   }, []);
 
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Features", path: "/features" },
-    { name: "Pricing", path: "/pricing" },
-    { name: "Demo", path: "/demo" },
-    { name: "About Us", path: "/about" },
-    { name: "Testimonials", path: "/testimonials" },
-    { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+  // These are the original nav items, restructured for dropdowns
+  const navStructure = [
+    { name: "Home", path: "/", dropdown: false },
+    { 
+      name: "Services", 
+      dropdown: true,
+      items: [
+        { name: "Features", path: "/features" },
+        { name: "Demo", path: "/demo" },
+        { name: "Pricing", path: "/pricing" },
+      ] 
+    },
+    { 
+      name: "About", 
+      dropdown: true,
+      items: [
+        { name: "About Us", path: "/about" },
+        { name: "Testimonials", path: "/testimonials" },
+      ] 
+    },
+    { 
+      name: "Resources", 
+      dropdown: true,
+      items: [
+        { name: "Blog", path: "/blog" },
+        { name: "Contact", path: "/contact" },
+      ] 
+    },
   ];
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  // Check if any item in dropdown is active
+  const isDropdownActive = (items: {name: string, path: string}[]) => {
+    return items.some(item => isActive(item.path));
   };
 
   return (
@@ -64,26 +103,57 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={cn(
-                "px-3 py-2 text-sm font-medium rounded-md transition-colors relative",
-                isActive(item.path)
-                  ? "text-accurate-purple-600"
-                  : "text-gray-700 hover:bg-gray-100"
-              )}
-            >
-              {item.name}
-              {isActive(item.path) && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accurate-purple-600 rounded-full" />
-              )}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop Navigation with Dropdowns */}
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            {navStructure.map((item) => (
+              item.dropdown ? (
+                <NavigationMenuItem key={item.name}>
+                  <NavigationMenuTrigger 
+                    className={cn(
+                      "transition-colors",
+                      isDropdownActive(item.items) && "text-accurate-purple-600"
+                    )}
+                  >
+                    {item.name}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-1 p-2">
+                      {item.items.map((subItem) => (
+                        <li key={subItem.name}>
+                          <Link
+                            to={subItem.path}
+                            className={cn(
+                              "block select-none rounded-md p-2 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
+                              isActive(subItem.path)
+                                ? "bg-accurate-purple-50 text-accurate-purple-600"
+                                : "text-gray-700"
+                            )}
+                          >
+                            {subItem.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ) : (
+                <NavigationMenuItem key={item.name}>
+                  <Link to={item.path}>
+                    <NavigationMenuLink 
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        isActive(item.path) && "text-accurate-purple-600"
+                      )}
+                    >
+                      {item.name}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-3">
@@ -116,21 +186,57 @@ const Navbar = () => {
                 </Button>
               </div>
               <nav className="flex flex-col gap-1 py-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    className={cn(
-                      "px-3 py-2 text-sm font-medium rounded-md transition-colors",
-                      isActive(item.path)
-                        ? "text-accurate-purple-600 bg-accurate-purple-50"
-                        : "text-gray-700 hover:bg-gray-100"
-                    )}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                {/* Mobile nav with accordions for dropdowns */}
+                {navStructure.map((item) => 
+                  item.dropdown ? (
+                    <div key={item.name} className="py-1">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button 
+                            variant="ghost" 
+                            className={cn(
+                              "justify-between w-full px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                              isDropdownActive(item.items) ? "text-accurate-purple-600" : "text-gray-700"
+                            )}
+                          >
+                            {item.name}
+                            <ChevronDown className="h-4 w-4 ml-2" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="start" className="w-full">
+                          {item.items.map((subItem) => (
+                            <DropdownMenuItem key={subItem.name} asChild>
+                              <Link
+                                to={subItem.path}
+                                className={cn(
+                                  "w-full px-2 py-1",
+                                  isActive(subItem.path) ? "text-accurate-purple-600" : ""
+                                )}
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {subItem.name}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      to={item.path}
+                      className={cn(
+                        "px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                        isActive(item.path)
+                          ? "text-accurate-purple-600 bg-accurate-purple-50"
+                          : "text-gray-700 hover:bg-gray-100"
+                      )}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )
+                )}
               </nav>
               <div className="mt-auto flex flex-col gap-2 py-4 border-t">
                 <Button variant="outline" className="w-full">Log In</Button>
