@@ -7,11 +7,11 @@ import { Check, Shield, X } from "lucide-react";
 
 const PricingPage = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
-  
+
   const toggleBillingCycle = () => {
     setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly");
   };
-  
+
   const pricingPlans = [
     {
       name: "Free",
@@ -26,7 +26,7 @@ const PricingPage = () => {
       ],
       mostPopular: false,
       cta: "Get Started"
-    }, 
+    },
     {
       name: "Standard",
       description: "Level up with unlimited invoicing, more users, and smart tools",
@@ -42,7 +42,7 @@ const PricingPage = () => {
       ],
       mostPopular: true,
       cta: "Start Free Trial"
-    }, 
+    },
     {
       name: "Pro",
       description: "For growing businesses that need more than accounting",
@@ -113,20 +113,15 @@ const PricingPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {pricingPlans.map(plan => (
-              <div 
-                key={plan.name} 
-                className={`relative rounded-xl border ${
-                  plan.mostPopular 
-                    ? "border-blue-500 shadow-xl ring-2 ring-blue-300 bg-gradient-to-b from-white to-blue-50 animate-pulse-slow transform hover:scale-105 transition-all duration-500" 
+              <div
+                key={plan.name}
+                className={`relative rounded-xl border ${plan.mostPopular
+                    ? "border-blue-500 shadow-xl ring-2 ring-blue-300 bg-gradient-to-b from-white to-blue-50 animate-pulse-slow transform hover:scale-105 transition-all duration-500"
                     : "border-gray-200 hover:border-blue-300 hover:shadow-lg"
-                } bg-white p-6 animate-on-scroll transition-all duration-300`}
+                  } bg-white p-6 animate-on-scroll transition-all duration-300`}
               >
                 {plan.mostPopular && (
-<<<<<<< HEAD
-                  <div className="absolute -top-6 left-0 right-0 mx-auto w-36 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 py-2 text-center text-sm font-semibold text-white shadow-lg animate-bounce">
-=======
                   <div className="absolute -top-4 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r from-sunset-500 to-sunset-600 py-1 text-center text-sm font-semibold text-white shadow-md animate-bounce-subtle">
->>>>>>> f57874e9f05a7aeb98614920d655b9491caad75f
                     Most Popular
                   </div>
                 )}
@@ -157,11 +152,11 @@ const PricingPage = () => {
                     </li>
                   ))}
                 </ul>
-                <Button 
-                  className={`w-full ${plan.mostPopular 
-                    ? "bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg hover:shadow-xl scale-[1.02]" 
-                    : plan.name === "Free" ? "bg-gradient-to-r from-sunset-400 to-sunset-500" : ""}`} 
-                  variant={plan.mostPopular || plan.name === "Free" ? "default" : "outline"} 
+                <Button
+                  className={`w-full ${plan.mostPopular
+                    ? "bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg hover:shadow-xl scale-[1.02]"
+                    : plan.name === "Free" ? "bg-gradient-to-r from-sunset-400 to-sunset-500" : ""}`}
+                  variant={plan.mostPopular || plan.name === "Free" ? "default" : "outline"}
                   asChild
                 >
                   <Link to="/contact">{plan.cta}</Link>
