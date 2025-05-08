@@ -13,9 +13,9 @@ import AboutPage from "./pages/AboutPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
+import DemoPage from "./pages/DemoPage";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
-import Features2 from "./pages/features2";
 
 const queryClient = new QueryClient();
 
@@ -29,12 +29,12 @@ const App = () => (
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/features" element={<FeaturesPage />} />
-            <Route path="/features2" element={<Features2 />} /> {/* Add this route for direct access if needed */}
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/demo" element={<DemoPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
