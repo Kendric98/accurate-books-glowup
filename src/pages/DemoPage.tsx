@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,14 +7,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { BookOpen, Video, Play } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { SectionHeading } from "@/components/SectionHeading";
-const DemoPage = () => {
+import { Link } from "react-router-dom";
+
+const DemoPage: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // In a real implementation, this would send the form data to a backend
     setFormSubmitted(true);
     setTimeout(() => setFormSubmitted(false), 5000);
   };
+  
   return <div className="min-h-screen">
     {/* Hero Section */}
     <section className="relative bg-gradient-to-b from-gray-50 to-white py-20 overflow-hidden">
@@ -101,8 +106,10 @@ const DemoPage = () => {
                 <p className="text-gray-600 mb-6 ml-6 flex-grow">
                   Step-by-step tutorials to help you master every aspect of MyAccurate Books, from setup to advanced features.
                 </p>
-                <Button variant="outline" className="w-full">
-                  <BookOpen className="mr-2 h-4 w-4" /> Browse Tutorials
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/blog">
+                    <BookOpen className="mr-2 h-4 w-4" /> Browse Tutorials
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -117,8 +124,10 @@ const DemoPage = () => {
                 <p className="text-gray-600 mb-6 ml-6 flex-grow">
                   Access a sandbox environment with sample data to explore the software at your own pace.
                 </p>
-                <Button variant="secondary" className="w-full">
-                  Access Demo Account
+                <Button variant="secondary" className="w-full" asChild>
+                  <Link to="/features">
+                    Access Demo Account
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -138,25 +147,29 @@ const DemoPage = () => {
             description: "Setup your account, import data, and configure basic settings",
             level: "Beginner",
             duration: "1 hour",
-            color: "accurate-blue"
+            color: "accurate-blue",
+            path: "/features"
           }, {
             title: "Daily Operations",
             description: "Learn how to handle day-to-day tasks like invoicing and expense tracking",
             level: "Beginner",
             duration: "2 hours",
-            color: "accurate-purple"
+            color: "accurate-purple",
+            path: "/features"
           }, {
             title: "Financial Reporting",
             description: "Master financial statements, custom reports, and insights",
             level: "Intermediate",
             duration: "1.5 hours",
-            color: "accurate-blue"
+            color: "accurate-blue",
+            path: "/blog"
           }, {
             title: "Advanced Features",
             description: "Explore advanced functionality for business optimization",
             level: "Advanced",
             duration: "2.5 hours",
-            color: "accurate-purple"
+            color: "accurate-purple",
+            path: "/features"
           }].map((path, index) => <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow my-[30px] py-[25px]">
                 <h3 className="text-lg font-semibold mb-3">{path.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{path.description}</p>
@@ -166,7 +179,9 @@ const DemoPage = () => {
                   </span>
                   <span className="text-gray-500">{path.duration}</span>
                 </div>
-                <Button variant="link" className="p-0 h-auto">Start Learning →</Button>
+                <Button variant="link" className="p-0 h-auto" asChild>
+                  <Link to={path.path}>Start Learning →</Link>
+                </Button>
               </div>)}
           </div>
         </div>
@@ -251,7 +266,6 @@ const DemoPage = () => {
       </section>
       
       {/* FAQ Section */}
-    {/* FAQ Section */}
     <section className="section-alt">
       <div className="container max-w-4xl">
         <SectionHeading
