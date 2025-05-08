@@ -122,7 +122,7 @@ const PricingPage = () => {
                 } bg-white p-6 animate-on-scroll transition-all duration-300`}
               >
                 {plan.mostPopular && (
-                  <div className="absolute -top-4 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r from-sunset-400 to-sunset-500 py-1 text-center text-sm font-semibold text-white shadow-md">
+                  <div className="absolute -top-6 left-0 right-0 mx-auto w-36 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 py-2 text-center text-sm font-semibold text-white shadow-lg animate-bounce">
                     Most Popular
                   </div>
                 )}
