@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -141,6 +142,14 @@ export default {
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' },
 				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.97' },
+				},
+				'bounce-subtle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-3px)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -151,6 +160,8 @@ export default {
 				'scale-out': 'scale-out 0.3s ease-out',
 				// Added from the integration
 				'fade-in-simple': 'fadeIn 0.5s ease-in-out',
+				'pulse-slow': 'pulse-slow 3s infinite ease-in-out',
+				'bounce-subtle': 'bounce-subtle 2s infinite ease-in-out',
 			}
 		}
 	},

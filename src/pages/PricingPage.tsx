@@ -117,24 +117,28 @@ const PricingPage = () => {
                 key={plan.name} 
                 className={`relative rounded-xl border ${
                   plan.mostPopular 
-                    ? "border-blue-500 shadow-xl ring-1 ring-blue-200" 
+                    ? "border-blue-500 shadow-xl ring-2 ring-blue-300 bg-gradient-to-b from-white to-blue-50 animate-pulse-slow transform hover:scale-105 transition-all duration-500" 
                     : "border-gray-200 hover:border-blue-300 hover:shadow-lg"
                 } bg-white p-6 animate-on-scroll transition-all duration-300`}
               >
                 {plan.mostPopular && (
+<<<<<<< HEAD
                   <div className="absolute -top-6 left-0 right-0 mx-auto w-36 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 py-2 text-center text-sm font-semibold text-white shadow-lg animate-bounce">
+=======
+                  <div className="absolute -top-4 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r from-sunset-500 to-sunset-600 py-1 text-center text-sm font-semibold text-white shadow-md animate-bounce-subtle">
+>>>>>>> f57874e9f05a7aeb98614920d655b9491caad75f
                     Most Popular
                   </div>
                 )}
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold">{plan.name}</h3>
+                  <h3 className={`text-xl font-bold ${plan.mostPopular ? "text-blue-700" : ""}`}>{plan.name}</h3>
                   <p className="text-gray-600 mt-1 h-12">{plan.description}</p>
                 </div>
                 <div className="mb-6">
                   {plan.customPrice ? (
                     <p className="text-3xl font-bold text-blue-700">{plan.customPrice}</p>
                   ) : (
-                    <p className="text-3xl font-bold text-blue-700">
+                    <p className={`text-3xl font-bold ${plan.mostPopular ? "text-blue-700" : "text-blue-700"}`}>
                       KES {billingCycle === "monthly" ? plan.monthlyPrice?.toLocaleString() : plan.yearlyPrice?.toLocaleString()}
                       {plan.monthlyPrice === 0 && <span className="text-lg text-gray-500 font-normal"> Free</span>}
                     </p>
@@ -148,14 +152,14 @@ const PricingPage = () => {
                 <ul className="mb-6 space-y-3">
                   {plan.features.map(feature => (
                     <li key={feature} className="flex items-start">
-                      <Check className="h-5 w-5 mr-2 text-blue-600 flex-shrink-0" />
+                      <Check className={`h-5 w-5 mr-2 ${plan.mostPopular ? "text-blue-600" : "text-blue-600"} flex-shrink-0`} />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Button 
                   className={`w-full ${plan.mostPopular 
-                    ? "bg-gradient-to-r from-blue-600 to-blue-700 shadow-md hover:shadow-lg" 
+                    ? "bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg hover:shadow-xl scale-[1.02]" 
                     : plan.name === "Free" ? "bg-gradient-to-r from-sunset-400 to-sunset-500" : ""}`} 
                   variant={plan.mostPopular || plan.name === "Free" ? "default" : "outline"} 
                   asChild
