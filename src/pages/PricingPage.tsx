@@ -98,7 +98,7 @@ const PricingPage = () => {
         <div className="container">
           <SectionHeading title="Plan Comparison" subtitle="Compare our plans to find the right fit for your business needs." />
           <div className="overflow-x-auto mt-12 shadow-md rounded w-full\n">
-            <table className="branded-table">
+            <table className="branded-table w-full ">
               <thead>
                 <tr>
                   <th className="p-4 text-left font-bold rounded-tl-xl">Features</th>

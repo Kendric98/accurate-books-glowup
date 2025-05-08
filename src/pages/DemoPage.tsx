@@ -15,20 +15,40 @@ const DemoPage = () => {
     setTimeout(() => setFormSubmitted(false), 5000);
   };
   return <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-gray-50 to-white py-20">
-        <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="heading-lg mb-4 text-gradient text-5xl">
-              Experience MyAccurate Books in Action
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover how our accounting software can transform your business finances through 
-              interactive demos, tutorials, and personalized onboarding sessions.
-            </p>
-          </div>
-        </div>
-      </section>
+    {/* Hero Section */}
+    <section className="relative bg-gradient-to-b from-gray-50 to-white py-20 overflow-hidden">
+      {/* Background Video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/resources/videos/demo-hero.mp4" 
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        {/* Fallback for unsupported browsers */}
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+
+      {/* Content */}
+      <div className="relative container max-w-6xl mx-auto px-4 text-center text-white">
+        <h1 className="heading-lg mb-4 text-5xl font-bold">
+          Experience MyAccurate Books in Action
+        </h1>
+        <p className="text-xl max-w-3xl mx-auto">
+          Discover how our accounting software can transform your business finances through
+          interactive demos, tutorials, and personalized onboarding sessions.
+        </p>
+        <a href="#demo-form" className="inline-block mt-8">
+          <Button className="bg-yellow-500 text-white hover:bg-yellow-600">
+            Get Started
+          </Button>
+        </a>
+      </div>
+    </section>
       
       {/* Demo Resources Section */}
       <section className="section">
@@ -42,8 +62,8 @@ const DemoPage = () => {
                 <div className="bg-accurate-purple-50 p-4 rounded-md mb-4 inline-flex">
                   <Video className="h-8 w-8 text-accurate-purple-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Product Demo</h3>
-                <p className="text-gray-600 mb-6 flex-grow">
+                <h3 className="text-xl font-semibold ml-6 mb-3">Product Demo</h3>
+                <p className="text-gray-600 mb-6 ml-6 flex-grow">
                   Watch our comprehensive product demo to see all features in action, from invoicing to financial reporting.
                 </p>
                 
@@ -77,8 +97,8 @@ const DemoPage = () => {
                 <div className="bg-accurate-purple-50 p-4 rounded-md mb-4 inline-flex">
                   <BookOpen className="h-8 w-8 text-accurate-purple-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Tutorials & Guides</h3>
-                <p className="text-gray-600 mb-6 flex-grow">
+                <h3 className="text-xl font-semibold ml-6 mb-3">Tutorials & Guides</h3>
+                <p className="text-gray-600 mb-6 ml-6 flex-grow">
                   Step-by-step tutorials to help you master every aspect of MyAccurate Books, from setup to advanced features.
                 </p>
                 <Button variant="outline" className="w-full">
@@ -93,8 +113,8 @@ const DemoPage = () => {
                 <div className="bg-accurate-purple-50 p-4 rounded-md mb-4 inline-flex">
                   <Play className="h-8 w-8 text-accurate-purple-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Live Demo Account</h3>
-                <p className="text-gray-600 mb-6 flex-grow">
+                <h3 className="text-xl font-semibold ml-6 mb-3">Live Demo Account</h3>
+                <p className="text-gray-600 mb-6 ml-6 flex-grow">
                   Access a sandbox environment with sample data to explore the software at your own pace.
                 </p>
                 <Button variant="secondary" className="w-full">
@@ -111,7 +131,7 @@ const DemoPage = () => {
         <div className="container">
           <SectionHeading title="Learning Paths" subtitle="Follow our structured learning paths to become a MyAccurate Books expert" alignment="center" />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 my-0 py-[30px]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4 my-0 py-[20px]">
             {/* Learning Path Items */}
             {[{
             title: "Getting Started",
@@ -153,7 +173,7 @@ const DemoPage = () => {
       </section>
       
       {/* Book a Demo Section */}
-      <section className="section">
+      <section id="demo-form" className="section">
         <div className="container max-w-6xl">
           <div className="bg-gradient-to-br from-accurate-purple-600 to-accurate-blue-600 rounded-2xl overflow-hidden shadow-xl">
             <div className="grid md:grid-cols-5 gap-0 py-0 my-[25px] mx-[13px] rounded-md">
@@ -231,33 +251,54 @@ const DemoPage = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="section-alt">
-        <div className="container max-w-4xl">
-          <SectionHeading title="Frequently Asked Questions" subtitle="Have questions about our demo process? Find answers to common queries below" alignment="center" />
-          
-          <div className="mt-12 space-y-6">
-            {[{
-            question: "How long does the demo usually take?",
-            answer: "Our personalized demos typically last 30-45 minutes, including time for questions. We can adjust the length based on your availability and requirements."
-          }, {
-            question: "Who should attend the demo session?",
-            answer: "We recommend including decision-makers and team members who will be using the software regularly, such as financial staff, accountants, or business owners."
-          }, {
-            question: "Can I request specific features to be demonstrated?",
-            answer: "Absolutely! We encourage you to let us know your specific interests so we can tailor the demo to focus on the features most relevant to your business needs."
-          }, {
-            question: "Is there any follow-up after the demo?",
-            answer: "Yes, we provide a demo recap email with helpful resources and your personal account manager will follow up to answer any additional questions you may have."
-          }, {
-            question: "How soon can I start using the software after the demo?",
-            answer: "You can start using MyAccurate Books immediately after the demo. We offer a free trial period and can provide onboarding assistance to help you get set up quickly."
-          }].map((faq, index) => <div key={index} className="bg-white p-6 rounded-lg shadow">
-                <h4 className="text-lg font-semibold mb-2">{faq.question}</h4>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>)}
-          </div>
+    {/* FAQ Section */}
+    <section className="section-alt">
+      <div className="container max-w-4xl">
+        <SectionHeading
+          title="Frequently Asked Questions"
+          subtitle="Have questions about our demo process? Find answers to common queries below"
+          alignment="center"
+        />
+
+        <div className="mt-12 flex flex-wrap gap-6 justify-center">
+          {[
+            {
+              question: "How long does the demo usually take?",
+              answer:
+                "Our personalized demos typically last 30-45 minutes, including time for questions. We can adjust the length based on your availability and requirements.",
+            },
+            {
+              question: "Who should attend the demo session?",
+              answer:
+                "We recommend including decision-makers and team members who will be using the software regularly, such as financial staff, accountants, or business owners.",
+            },
+            {
+              question: "Can I request specific features to be demonstrated?",
+              answer:
+                "Absolutely! We encourage you to let us know your specific interests so we can tailor the demo to focus on the features most relevant to your business needs.",
+            },
+            {
+              question: "Is there any follow-up after the demo?",
+              answer:
+                "Yes, we provide a demo recap email with helpful resources and your personal account manager will follow up to answer any additional questions you may have.",
+            },
+            {
+              question: "How soon can I start using the software after the demo?",
+              answer:
+                "You can start using MyAccurate Books immediately after the demo. We offer a free trial period and can provide onboarding assistance to help you get set up quickly.",
+            },
+          ].map((faq, index) => (
+            <div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow w-full md:w-[calc(50%-12px)]"
+            >
+              <h4 className="text-lg font-semibold mb-2">{faq.question}</h4>
+              <p className="text-gray-600">{faq.answer}</p>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
     </div>;
 };
 export default DemoPage;

@@ -12,7 +12,7 @@ export function SectionHeading({
   className,
   ...props
 }: SectionHeadingProps) {
-  return <div className={cn("mb-12", {
+  return <div className={cn("mb-4 mt-10", {
     "text-center": alignment === "center",
     "text-left": alignment === "left",
     "text-right": alignment === "right"
