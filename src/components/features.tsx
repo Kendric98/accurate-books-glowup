@@ -1,11 +1,49 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 
 const FeaturesTabs = () => {
   const [activeTab, setActiveTab] = useState('all-features');
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+    
+    // Scroll to the selected section
+    const element = document.getElementById(tab);
+    if (element) {
+      // Add a slight delay to ensure the DOM has updated
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
   };
+
+  // Set active tab based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        'all-features', 
+        'accounting', 
+        'pos', 
+        'payments', 
+        'management', 
+        'roadmap'
+      ];
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveTab(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
@@ -13,14 +51,13 @@ const FeaturesTabs = () => {
       <section className="py-12 bg-white sticky top-16 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex overflow-x-auto pb-2 space-x-2">
-                      <button
-                          aria-selected={activeTab === 'all-features'}
-                          className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'all-features' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'
-                              }`}
-                          onClick={() => handleTabChange('all-features')}
-                      >
-                          All Features
-                      </button>
+            <button
+              aria-selected={activeTab === 'all-features'}
+              className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'all-features' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+              onClick={() => handleTabChange('all-features')}
+            >
+              All Features
+            </button>
             <button 
               className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'accounting' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
               onClick={() => handleTabChange('accounting')}
