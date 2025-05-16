@@ -103,8 +103,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h4 className="font-bold mb-1">Phone</h4>
-                      <p className="text-gray-600">+254 (0) 700 000 000</p>
-                      <p className="text-gray-600">+254 (0) 711 000 000</p>
+                      <p className="text-gray-600">+254 (0) 116 333 000</p>
+                      <p className="text-gray-600">+254 (0) 728 897 429</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -129,7 +129,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h4 className="font-bold mb-1">Address</h4>
-                      <p className="text-gray-600">123 Business Road</p>
+                      <p className="text-gray-600">83, Westlands Road</p>
                       <p className="text-gray-600">Nairobi, Kenya</p>
                     </div>
                   </div>

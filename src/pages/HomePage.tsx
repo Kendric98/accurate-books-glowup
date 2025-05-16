@@ -22,7 +22,7 @@ const HomePage = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
-                  <Link to="/contact">Get Started</Link>
+                  <Link to="/pricing">Get Started</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <Link to="/features">Explore Features</Link>

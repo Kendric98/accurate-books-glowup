@@ -14,52 +14,56 @@ const PricingPage = () => {
 
   const pricingPlans = [
     {
-      name: "Free",
+      name: "Basic",
       description: "Start for free and accept payments with ease",
       monthlyPrice: 0,
       yearlyPrice: 0,
       features: [
-        "1 user",
-        "10 invoices/month",
-        "Mpesa & POS enabled",
-        "Community support"
+      "1 user",
+      "10 invoices/month",
+      "Mpesa & POS enabled",
+      "Wallet module",
+      "Community support"
       ],
       mostPopular: false,
-      cta: "Get Started"
+      cta: "Get Started",
+      disabled: false
     },
     {
       name: "Standard",
       description: "Level up with unlimited invoicing, more users, and smart tools",
+      monthlyPrice: 1500,
+      yearlyPrice: 15300, // 15% discount on yearly
+      features: [
+      "5 users",
+      "Unlimited invoices",
+      "Mpesa, POS & bank payments",
+      "Wallet module",
+      "Priority email support",
+      "1-month FREE trial"
+      ],
+      mostPopular: true,
+      cta: "Start Free Trial",
+      disabled: false
+    },
+    {
+      name: "Gold",
+      description: "For growing businesses that need more than accounting",
       monthlyPrice: 3000,
       yearlyPrice: 30000, // 15% discount on yearly
       features: [
-        "5 users",
-        "Unlimited invoices",
-        "Mpesa, POS & bank payments",
-        "Wallet module",
-        "Priority email support",
-        "1-month FREE trial"
-      ],
-      mostPopular: true,
-      cta: "Start Free Trial"
-    },
-    {
-      name: "Pro",
-      description: "For growing businesses that need more than accounting",
-      monthlyPrice: 6000,
-      yearlyPrice: 61200, // 15% discount on yearly
-      features: [
-        "20 users",
-        "Unlimited invoices",
-        "Mpesa, POS, bank payments",
-        "Wallet module",
-        "Payroll module",
-        "Business management module",
-        "Multi-location support",
-        "Priority chat support"
+      "20 users",
+      "Unlimited invoices",
+      "Mpesa, POS, bank payments",
+      "Wallet module",
+      "Payroll module",
+      "Business management module",
+      "Multi-Branch support",
+      "Priority chat support"
       ],
       mostPopular: false,
-      cta: "Upgrade to Pro"
+      cta: "Upgrade to Pro",
+      disabled: true // <-- This button will be greyed out
     },
     {
       name: "Enterprise",
@@ -68,18 +72,19 @@ const PricingPage = () => {
       yearlyPrice: null,
       customPrice: "Custom",
       features: [
-        "Unlimited users",
-        "Unlimited invoices",
-        "Mpesa, POS, bank payments",
-        "Wallet, Payroll, Business Management modules",
-        "Multi-location support",
-        "API access",
-        "Dedicated account manager"
+      "Unlimited users",
+      "Unlimited invoices",
+      "Mpesa, POS, bank payments",
+      "Wallet, Payroll, Business Management modules",
+      "Multi-location support",
+      "API access",
+      "Dedicated account manager"
       ],
       mostPopular: false,
-      cta: "Contact Sales"
+      cta: "Contact Sales",
+      disabled: true
     }
-  ];
+    ];
 
   return (
     <div>
@@ -176,9 +181,9 @@ const PricingPage = () => {
               <thead>
                 <tr>
                   <th className="p-4 text-left font-bold rounded-tl-xl">Features</th>
-                  <th className="p-4 text-center font-bold">Free</th>
+                  <th className="p-4 text-center font-bold">Basic</th>
                   <th className="p-4 text-center font-bold bg-blue-100">Standard</th>
-                  <th className="p-4 text-center font-bold bg-sunset-100">Pro</th>
+                  <th className="p-4 text-center font-bold bg-sunset-100">Gold</th>
                   <th className="p-4 text-center font-bold rounded-tr-xl">Enterprise</th>
                 </tr>
               </thead>
@@ -206,7 +211,7 @@ const PricingPage = () => {
                 </tr>
                 <tr>
                   <td className="p-4 font-medium">Wallet module</td>
-                  <td className="p-4 text-center"><X className="h-5 w-5 mx-auto text-red-500" /></td>
+                  <td className="p-4 text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
                   <td className="p-4 text-center bg-blue-50"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
                   <td className="p-4 text-center bg-sunset-50"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
                   <td className="p-4 text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
@@ -279,13 +284,13 @@ const PricingPage = () => {
                 </p>
               </div>
               <div className="bg-white rounded-lg border border-sunset-100 p-6 animate-on-scroll shadow-sm hover:shadow-md transition-all hover:border-sunset-200">
-                <h3 className="text-lg font-bold mb-2 text-sunset-700">What payment methods do you accept?</h3>
+                <h3 className="text-lg font-bold mb-2 text-blue-700">What payment methods do you accept?</h3>
                 <p className="text-gray-600">
                   We accept major credit cards, bank transfers, and mobile money payments including M-Pesa.
                 </p>
               </div>
               <div className="bg-white rounded-lg border border-sunset-100 p-6 animate-on-scroll shadow-sm hover:shadow-md transition-all hover:border-sunset-200">
-                <h3 className="text-lg font-bold mb-2 text-sunset-700">Do you offer custom plans?</h3>
+                <h3 className="text-lg font-bold mb-2 text-blue-700">Do you offer custom plans?</h3>
                 <p className="text-gray-600">
                   Yes, our Enterprise plan offers customized solutions for large or complex businesses. Please contact our sales team for more information.
                 </p>
@@ -308,7 +313,7 @@ const PricingPage = () => {
                 <Link to="/contact">Contact Sales</Link>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
-                <Link to="/contact">Book a Demo</Link>
+                <Link to="/demo">Book a Demo</Link>
               </Button>
             </div>
           </div>
