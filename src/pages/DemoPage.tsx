@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,12 +10,102 @@ import { Link } from "react-router-dom";
 
 const DemoPage: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateEnvVariables = () => {
+    const requiredVars = {
+      'VITE_HUBSPOT_PORTAL_ID': import.meta.env.VITE_HUBSPOT_PORTAL_ID,
+      'VITE_HUBSPOT_FORM_ID': import.meta.env.VITE_HUBSPOT_FORM_ID,
+      'VITE_HUBSPOT_API_KEY': import.meta.env.VITE_HUBSPOT_API_KEY
+    };
+
+    const missingVars = Object.entries(requiredVars)
+      .filter(([_, value]) => !value)
+      .map(([key]) => key);
+
+    if (missingVars.length > 0) {
+      throw new Error(`Missing required environment variables: ${missingVars.join(', ')}`);
+    }
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, this would send the form data to a backend
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Validate environment variables first
+      validateEnvVariables();
+
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+
+      // Map form fields to HubSpot properties
+      const hubspotData = {
+        fields: [
+          {
+            name: "firstname",
+            value: formData.get("name")?.toString().split(" ")[0] || ""
+          },
+          {
+            name: "lastname",
+            value: formData.get("name")?.toString().split(" ").slice(1).join(" ") || ""
+          },
+          {
+            name: "email",
+            value: formData.get("email") || ""
+          },
+          {
+            name: "company",
+            value: formData.get("company") || ""
+          },
+          {
+            name: "phone",
+            value: formData.get("phone") || ""
+          },
+          {
+            name: "message",
+            value: formData.get("message") || ""
+          }
+        ],
+        context: {
+          pageUri: window.location.href,
+          pageName: "Demo Request Form"
+        }
+      };
+
+      const portalId = import.meta.env.VITE_HUBSPOT_PORTAL_ID;
+      const formId = import.meta.env.VITE_HUBSPOT_FORM_ID;
+      const apiKey = import.meta.env.VITE_HUBSPOT_API_KEY;
+
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`
+          },
+          body: JSON.stringify(hubspotData)
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || `Failed to submit form to HubSpot (Status: ${response.status})`);
+      }
+
     setFormSubmitted(true);
+      form.reset();
     setTimeout(() => setFormSubmitted(false), 5000);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "An error occurred while submitting the form";
+      setError(errorMessage);
+      console.error("Form submission error:", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
   
   return <div className="min-h-screen">
@@ -24,19 +113,19 @@ const DemoPage: React.FC = () => {
     <section className="relative bg-gradient-to-b from-gray-50 to-white py-20 overflow-hidden">
       {/* Background Video */}
       <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/resources/videos/demo-hero.mp4" 
+        className="absolute inset-0 w-full h-full object-cover opacity-70"
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
       >
-        {/* Fallback for unsupported browsers */}
+        <source src="/resources/videos/demo-hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-25"></div>
 
       {/* Content */}
       <div className="relative container max-w-6xl mx-auto px-4 text-center text-white">
@@ -107,7 +196,7 @@ const DemoPage: React.FC = () => {
                   Step-by-step tutorials to help you master every aspect of MyAccurate Books, from setup to advanced features.
                 </p>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link to="/blog">
+                  <Link to="/coming-soon">
                     <BookOpen className="mr-2 h-4 w-4" /> Browse Tutorials
                   </Link>
                 </Button>
@@ -125,7 +214,7 @@ const DemoPage: React.FC = () => {
                   Access a sandbox environment with sample data to explore the software at your own pace.
                 </p>
                 <Button variant="secondary" className="w-full" asChild>
-                  <Link to="/features">
+                  <Link to="/coming-soon">
                     Access Demo Account
                   </Link>
                 </Button>
@@ -188,77 +277,147 @@ const DemoPage: React.FC = () => {
       </section>
       
       {/* Book a Demo Section */}
-      <section id="demo-form" className="section">
-        <div className="container max-w-6xl">
-          <div className="bg-gradient-to-br from-accurate-purple-600 to-accurate-blue-600 rounded-2xl overflow-hidden shadow-xl">
-            <div className="grid md:grid-cols-5 gap-0 py-0 my-[25px] mx-[13px] rounded-md">
+      <section id="demo-form" className="section w-full">
+        <div className="container px-0">
+          <div className="bg-gradient-to-br from-accurate-purple-600 to-accurate-blue-600 rounded-lg overflow-hidden shadow-xl relative">
+            {/* Animated background elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-accurate-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-accurate-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-accurate-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+            </div>
+
+            {/* Floating particles */}
+            <div className="absolute inset-0">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`absolute w-2 h-2 bg-white rounded-full animate-float`}
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animationDelay: `${i * 0.5}s`,
+                    opacity: 0.6
+                  }}
+                />
+              ))}
+            </div>
+
+            <div className="grid md:grid-cols-5 gap-0 py-0 my-[25px] rounded-md relative">
               {/* Image/Graphic Side */}
-              <div className="md:col-span-2 bg-accurate-purple-700 p-10 flex items-center my-0">
-                <div className="text-white">
-                  <h2 className="text-3xl font-bold mb-6">Get a Personalized Demo</h2>
+              <div className="md:col-span-2 bg-accurate-purple-700/90 p-10 flex items-center my-0 backdrop-blur-sm">
+                <div className="text-white relative">
+                  <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-white/30 rounded-full animate-ping"></div>
+                  <h2 className="text-3xl font-bold mb-6 relative">
+                    Get a Personalized Demo
+                    <div className="absolute -bottom-2 left-0 w-24 h-1 bg-white/30 rounded-full animate-pulse"></div>
+                  </h2>
                   <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
-                      <span>Customized to your business needs</span>
+                    {[
+                      "Customized to your business needs",
+                      "Personal Q&A session",
+                      "Implementation guidance",
+                      "Free onboarding support"
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start group">
+                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm transform group-hover:scale-110 transition-transform">✓</span>
+                        <span className="group-hover:translate-x-1 transition-transform">{item}</span>
                     </li>
-                    <li className="flex items-start">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
-                      <span>Personal Q&A session</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
-                      <span>Implementation guidance</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white text-accurate-purple-700 mr-3 font-bold text-sm">✓</span>
-                      <span>Free onboarding support</span>
-                    </li>
+                    ))}
                   </ul>
                 </div>
               </div>
               
               {/* Form Side */}
-              <div className="md:col-span-3 bg-white p-8 md:p-10">
-                <h3 className="text-2xl font-semibold mb-6">Schedule Your Free Demo</h3>
+              <div className="md:col-span-3 bg-white/95 p-8 md:p-10 backdrop-blur-sm relative">
+                <div className="absolute -top-4 -right-4 w-8 h-8 border-2 border-accurate-purple-300 rounded-full animate-ping"></div>
+                <h3 className="text-2xl font-semibold mb-6 relative">
+                  Schedule Your Free Demo
+                  <div className="absolute -bottom-2 left-0 w-32 h-1 bg-accurate-purple-200 rounded-full animate-pulse"></div>
+                </h3>
                 
-                {formSubmitted ? <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-8 rounded-lg text-center">
-                    <svg className="mx-auto h-12 w-12 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <h4 className="text-lg font-semibold mb-2">Demo Request Submitted!</h4>
-                    <p>Our team will contact you within 1 business day to schedule your personalized demo.</p>
-                  </div> : <form onSubmit={handleSubmit} className="space-y-5">
+                {error && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-center">
+                    {error}
+                  </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid md:grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Full Name</Label>
-                        <Input id="name" placeholder="Your name" required />
+                    <div className="space-y-2 group">
+                      <Label htmlFor="name" className="group-hover:text-accurate-purple-600 transition-colors">Full Name</Label>
+                      <Input 
+                        id="name" 
+                        name="name"
+                        placeholder="Your name" 
+                        required 
+                        className="focus:ring-2 focus:ring-accurate-purple-500 transition-all" 
+                      />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input id="email" type="email" placeholder="your@email.com" required />
+                    <div className="space-y-2 group">
+                      <Label htmlFor="email" className="group-hover:text-accurate-purple-600 transition-colors">Email Address</Label>
+                      <Input 
+                        id="email" 
+                        name="email"
+                        type="email" 
+                        placeholder="your@email.com" 
+                        required 
+                        className="focus:ring-2 focus:ring-accurate-purple-500 transition-all" 
+                      />
                       </div>
                     </div>
                     
                     <div className="grid md:grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <Label htmlFor="company">Company Name</Label>
-                        <Input id="company" placeholder="Your company" required />
+                    <div className="space-y-2 group">
+                      <Label htmlFor="company" className="group-hover:text-accurate-purple-600 transition-colors">Company Name</Label>
+                      <Input 
+                        id="company" 
+                        name="company"
+                        placeholder="Your company" 
+                        required 
+                        className="focus:ring-2 focus:ring-accurate-purple-500 transition-all" 
+                      />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input id="phone" placeholder="Your phone number" />
+                    <div className="space-y-2 group">
+                      <Label htmlFor="phone" className="group-hover:text-accurate-purple-600 transition-colors">Phone Number</Label>
+                      <Input 
+                        id="phone" 
+                        name="phone"
+                        placeholder="Your phone number" 
+                        className="focus:ring-2 focus:ring-accurate-purple-500 transition-all" 
+                      />
                       </div>
                     </div>
                     
-                    <div className="space-y-2">
-                      <Label htmlFor="message">What are your specific interests?</Label>
-                      <Textarea id="message" placeholder="Tell us about your business and what you're looking for..." rows={4} />
+                  <div className="space-y-2 group">
+                    <Label htmlFor="message" className="group-hover:text-accurate-purple-600 transition-colors">What are your specific interests?</Label>
+                    <Textarea 
+                      id="message" 
+                      name="message"
+                      placeholder="Tell us about your business and what you're looking for..." 
+                      rows={6} 
+                      className="focus:ring-2 focus:ring-accurate-purple-500 transition-all" 
+                    />
                     </div>
                     
-                    <Button type="submit" size="lg" className="w-full md:w-auto">
-                      Book My Free Demo
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full md:w-auto bg-gradient-to-r from-accurate-purple-600 to-accurate-blue-600 hover:from-accurate-purple-700 hover:to-accurate-blue-700 transform hover:scale-105 transition-all"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                      </div>
+                    ) : (
+                      "Book My Free Demo"
+                    )}
                     </Button>
-                  </form>}
+                </form>
               </div>
             </div>
           </div>
@@ -267,7 +426,7 @@ const DemoPage: React.FC = () => {
       
       {/* FAQ Section */}
     <section className="section-alt">
-      <div className="container max-w-4xl">
+      <div className="container max-w-8xl pb-10">
         <SectionHeading
           title="Frequently Asked Questions"
           subtitle="Have questions about our demo process? Find answers to common queries below"

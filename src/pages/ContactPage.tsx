@@ -1,10 +1,37 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SectionHeading } from "@/components/SectionHeading";
+import { useEffect } from "react";
 
 const ContactPage = () => {
+  useEffect(() => {
+    // Load HubSpot script
+    const script = document.createElement('script');
+    script.src = '//js-eu1.hsforms.net/forms/embed/v2.js';
+    script.charset = 'utf-8';
+    script.type = 'text/javascript';
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      // @ts-ignore
+      if (window.hbspt) {
+        // @ts-ignore
+        window.hbspt.forms.create({
+          portalId: "145300308",
+          formId: "de5f6a45-b7ff-4408-b0f3-ea332d835e29",
+          region: "eu1",
+          target: "#hubspot-form-container"
+        });
+      }
+    };
+
+    return () => {
+      // Cleanup script on component unmount
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
@@ -28,53 +55,7 @@ const ContactPage = () => {
               <p className="text-lg text-gray-700 mb-8">
                 Complete the form below and one of our team members will get back to you as soon as possible.
               </p>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 mb-1">
-                      First Name
-                    </label>
-                    <Input id="first-name" placeholder="Enter your first name" />
-                  </div>
-                  <div>
-                    <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Last Name
-                    </label>
-                    <Input id="last-name" placeholder="Enter your last name" />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <Input id="email" type="email" placeholder="Enter your email address" />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number
-                  </label>
-                  <Input id="phone" placeholder="Enter your phone number" />
-                </div>
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                    Company Name
-                  </label>
-                  <Input id="company" placeholder="Enter your company name" />
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                    Subject
-                  </label>
-                  <Input id="subject" placeholder="What is this regarding?" />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <Textarea id="message" placeholder="How can we help you?" rows={5} />
-                </div>
-                <Button size="lg" type="submit">Send Message</Button>
-              </form>
+              <div id="hubspot-form-container" className="min-h-[600px]"></div>
             </div>
             <div className="animate-on-scroll">
               <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 h-full">
@@ -173,10 +154,11 @@ const ContactPage = () => {
             subtitle="Visit our office or reach out to us online."
           />
           <div className="aspect-[16/9] bg-gray-200 rounded-xl overflow-hidden shadow-sm animate-on-scroll">
-            {/* Replace with an actual map */}
-            <div className="w-full h-full flex items-center justify-center">
-              <p className="text-gray-500 font-medium">Map Placeholder</p>
-            </div>
+            <img 
+              src="/images/map.png" 
+              alt="Office Location Map" 
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>

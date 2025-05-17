@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Link } from "react-router-dom";
@@ -6,40 +5,40 @@ import { Link } from "react-router-dom";
 const AboutPage = () => {
   const teamMembers = [
     {
-      name: "Jane Mwangi",
+      name: "Dr. Regina Kingori",
       role: "Founder & CEO",
-      bio: "With over 15 years of experience in accounting and finance, Jane founded MyAccurate Books to help SMEs across Africa simplify their financial management.",
-      imagePlaceholder: "J",
+      bio: "A visionary leader with extensive experience in finance and technology, Dr. Kingori founded MyAccurate Books to revolutionize financial management for African SMEs. Her expertise and passion for empowering businesses drives our mission forward.",
+      imagePlaceholder: "R",
     },
     {
-      name: "David Omondi",
+      name: "Ken Ngugi",
       role: "CTO",
-      bio: "David leads our technology team, bringing 10+ years of software development experience to create intuitive and powerful solutions for businesses.",
-      imagePlaceholder: "D",
+      bio: "Ken leads our technology team, bringing extensive experience in software development and system architecture to create robust and scalable solutions for our clients.",
+      imagePlaceholder: "K",
     },
     {
-      name: "Sarah Kimani",
-      role: "Head of Customer Success",
-      bio: "Sarah ensures that every customer gets the most out of MyAccurate Books, providing training and support to businesses of all sizes.",
-      imagePlaceholder: "S",
-    },
-    {
-      name: "John Kamau",
-      role: "Chief Financial Officer",
-      bio: "John oversees our financial operations and ensures that MyAccurate Books meets the highest standards of financial accuracy and compliance.",
+      name: "John Gachoka",
+      role: "Customer Success",
+      bio: "John ensures that every customer gets the most out of MyAccurate Books, providing exceptional support and training to businesses of all sizes.",
       imagePlaceholder: "J",
     },
     {
-      name: "Faith Njeri",
-      role: "Head of Marketing",
-      bio: "Faith leads our marketing initiatives, helping businesses across Africa discover how MyAccurate Books can transform their financial management.",
-      imagePlaceholder: "F",
+      name: "Ken Mburu",
+      role: "Backend Engineer",
+      bio: "Ken specializes in building secure and efficient backend systems that power our platform's core functionality and ensure reliable performance.",
+      imagePlaceholder: "K",
     },
     {
-      name: "Michael Waweru",
-      role: "Lead Developer",
-      bio: "Michael works tirelessly to enhance our platform's features and ensure a seamless user experience for all our clients.",
-      imagePlaceholder: "M",
+      name: "Pius Gachaga",
+      role: "Mobile Engineer",
+      bio: "Pius leads our mobile development efforts, creating intuitive and powerful mobile experiences that allow our users to manage their business on the go.",
+      imagePlaceholder: "P",
+    },
+    {
+      name: "Ken Lelei",
+      role: "Frontend Engineer",
+      bio: "Ken crafts beautiful and responsive user interfaces that make financial management intuitive and accessible for all our users.",
+      imagePlaceholder: "K",
     },
   ];
 
@@ -51,7 +50,7 @@ const AboutPage = () => {
           <div className="max-w-3xl mx-auto text-center animate-on-scroll">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Story</h1>
             <p className="text-xl text-gray-700 mb-8">
-              MyAccurate Books was founded with a mission to empower SMEs across Africa with simple, affordable accounting solutions.
+              MyAccurate Books is revolutionizing financial management for African SMEs with our innovative cloud-based accounting solution. We're making professional accounting accessible, affordable, and easy to use for businesses across the continent.
             </p>
           </div>
         </div>
@@ -64,13 +63,13 @@ const AboutPage = () => {
             <div className="animate-on-scroll">
               <h2 className="text-3xl font-bold mb-6">Our Beginnings</h2>
               <p className="text-lg text-gray-700 mb-6">
-                Founded in 2020, MyAccurate Books emerged from a simple observation: small business owners across Africa were spending valuable time struggling with accounting tasks instead of focusing on growth.
+                Founded in 2020, MyAccurate Books emerged from a critical need in the African business landscape. We recognized that small and medium-sized enterprises were struggling with complex accounting tasks, often leading to financial mismanagement and missed growth opportunities.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                Our journey began when our founder, Jane Mwangi, noticed that existing accounting solutions were either too complex or too expensive for most African SMEs. With her background in finance and passion for supporting local entrepreneurs, she set out to create something different.
+                Our journey began when our founder, Dr. Regina Kingori, identified that existing accounting solutions were either too complex, too expensive, or not adapted to the unique needs of African businesses. With her extensive background in finance and technology, she envisioned a solution that would empower entrepreneurs to take control of their financial future.
               </p>
               <p className="text-lg text-gray-700">
-                Today, MyAccurate Books serves thousands of businesses in Kenya, Uganda, Tanzania, Rwanda, and beyond, with a growing team of dedicated professionals committed to simplifying financial management for entrepreneurs.
+                Today, MyAccurate Books serves thousands of businesses across Kenya, Uganda, Tanzania, Rwanda, and beyond. Our platform has become an essential tool for entrepreneurs, helping them streamline their financial operations, make informed decisions, and focus on growing their businesses.
               </p>
             </div>
             <div className="relative animate-on-scroll">
@@ -100,10 +99,10 @@ const AboutPage = () => {
               </div>
               <h2 className="text-2xl font-bold mb-4">Our Vision</h2>
               <p className="text-gray-700 mb-6">
-                To create a world where every business owner, regardless of their accounting knowledge, can confidently manage their finances and make informed business decisions.
+                We envision a future where every African business owner, regardless of their accounting knowledge or technical expertise, can confidently manage their finances and make data-driven decisions that drive growth and success.
               </p>
               <p className="text-gray-700">
-                We envision a thriving African business ecosystem where entrepreneurs have the tools they need to build sustainable enterprises that contribute to economic growth and community development.
+                Our goal is to contribute to the development of a thriving African business ecosystem where entrepreneurs have access to the tools, knowledge, and support they need to build sustainable enterprises that create jobs, generate wealth, and drive economic development across the continent.
               </p>
             </div>
             <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 animate-on-scroll">
@@ -115,10 +114,10 @@ const AboutPage = () => {
               </div>
               <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
               <p className="text-gray-700 mb-6">
-                To provide small and medium-sized enterprises with intuitive, affordable, and powerful accounting solutions that simplify financial management and drive business growth.
+                To empower African SMEs with intuitive, affordable, and powerful accounting solutions that simplify financial management, ensure compliance, and drive business growth. We're committed to making professional accounting accessible to businesses of all sizes.
               </p>
               <p className="text-gray-700">
-                We're committed to developing technology that addresses the unique challenges faced by African businesses, from unreliable internet connectivity to varying regulatory requirements across different countries.
+                We're dedicated to developing technology that addresses the unique challenges faced by African businesses, from unreliable internet connectivity to varying regulatory requirements across different countries. Our platform is built to work seamlessly in the African context, helping businesses thrive in any environment.
               </p>
             </div>
           </div>
@@ -136,37 +135,37 @@ const AboutPage = () => {
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll">
               <h3 className="text-xl font-bold mb-3">Built for African SMEs</h3>
               <p className="text-gray-600">
-                Unlike global solutions that try to be everything to everyone, MyAccurate Books is specifically designed for the unique needs and challenges of small businesses in African markets.
+                Our platform is specifically designed for the unique needs and challenges of African businesses, with features that address local market requirements, tax regulations, and business practices.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll" style={{ animationDelay: "0.2s" }}>
-              <h3 className="text-xl font-bold mb-3">Works Online and Offline</h3>
+              <h3 className="text-xl font-bold mb-3">Real-time Financial Insights</h3>
               <p className="text-gray-600">
-                We understand that internet connectivity can be unreliable in some regions, so our system is designed to work offline and sync data when connectivity is restored.
+                Get instant access to your business's financial health with our comprehensive dashboard, featuring cash flow analysis, revenue tracking, and expense management in real-time.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll" style={{ animationDelay: "0.4s" }}>
               <h3 className="text-xl font-bold mb-3">Local Payment Integrations</h3>
               <p className="text-gray-600">
-                Our platform seamlessly integrates with popular African payment systems like M-Pesa, ensuring that businesses can easily track and reconcile all transactions.
+                Seamless integration with popular African payment systems including M-Pesa, Airtel Money, and bank transfers, making it easy to track and reconcile all transactions in one place.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll" style={{ animationDelay: "0.6s" }}>
-              <h3 className="text-xl font-bold mb-3">Multilingual Support</h3>
+              <h3 className="text-xl font-bold mb-3">Advanced Business Analytics</h3>
               <p className="text-gray-600">
-                To serve our diverse user base, MyAccurate Books is available in multiple languages, including English, Swahili, French, and more, with plans to add additional languages.
+                Make data-driven decisions with our powerful analytics tools, featuring customizable reports, trend analysis, and predictive insights to help you understand and grow your business.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll" style={{ animationDelay: "0.8s" }}>
               <h3 className="text-xl font-bold mb-3">Comprehensive Training</h3>
               <p className="text-gray-600">
-                We offer extensive onboarding and training resources, ensuring that business owners can get the most out of our platform regardless of their technical experience.
+                Extensive onboarding, training resources, and ongoing support to ensure businesses can maximize the value of our platform, regardless of their technical expertise.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 animate-on-scroll" style={{ animationDelay: "1s" }}>
               <h3 className="text-xl font-bold mb-3">Continuous Improvement</h3>
               <p className="text-gray-600">
-                We regularly gather feedback from our users and continuously update our platform to meet the evolving needs of African businesses and adapt to changing regulations.
+                Regular updates and new features based on user feedback, ensuring our platform evolves to meet the changing needs of African businesses and adapts to new regulations.
               </p>
             </div>
           </div>
@@ -256,63 +255,87 @@ const AboutPage = () => {
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 relative animate-on-scroll">
+              {/* Floating RWK Africa Logo */}
+              <div className="absolute -top-12 -right-12 bg-white p-4 rounded-full shadow-xl border border-gray-100 transform rotate-12 hover:rotate-0 transition-all duration-500 z-10 group hover:scale-110 hover:shadow-2xl">
+                <div className="relative">
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 animate-[shimmer_2s_infinite]"></div>
+                  
+                  {/* Glowing background */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-accurate-purple-400/20 to-accurate-blue-400/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <img
+                    src="/images/rwk-logo.png"
+                    alt="RWK Africa Logo"
+                    className="w-32 h-32 object-contain relative z-10 transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                  
+                  {/* Floating particles */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100">
+                    <div className="absolute top-0 left-1/2 w-1 h-1 bg-accurate-purple-400 rounded-full animate-[float_3s_ease-in-out_infinite]"></div>
+                    <div className="absolute top-1/4 right-0 w-1 h-1 bg-accurate-blue-400 rounded-full animate-[float_4s_ease-in-out_infinite_0.5s]"></div>
+                    <div className="absolute bottom-1/4 left-0 w-1 h-1 bg-accurate-purple-400 rounded-full animate-[float_3.5s_ease-in-out_infinite_1s]"></div>
+                    <div className="absolute bottom-0 right-1/4 w-1 h-1 bg-accurate-blue-400 rounded-full animate-[float_4.5s_ease-in-out_infinite_1.5s]"></div>
+                  </div>
+                </div>
+              </div>
               <div className="absolute inset-0 bg-gradient-to-r from-accurate-blue-200 to-accurate-purple-200 rounded-lg transform -rotate-3"></div>
               <div className="bg-white rounded-lg shadow-xl overflow-hidden border border-gray-100 relative">
                 <img
                   src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                   alt="RWK Africa Services"
-                  className="w-full h-auto"
+                  className="w-full h-[500px] object-cover"
                 />
               </div>
             </div>
             <div className="order-1 md:order-2 animate-on-scroll">
               <h2 className="text-3xl font-bold mb-6">Part of the RWK Africa Ecosystem</h2>
               <p className="text-lg text-gray-700 mb-6">
-                MyAccurate Books is proud to be part of the RWK Africa ecosystem, connecting businesses to a wider range of professional services and resources.
+                MyAccurate Books is proud to be part of the RWK Africa ecosystem, a comprehensive business solutions provider dedicated to empowering African businesses with integrated services and expertise.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                Through this connection, our customers gain access to:
+                Through this strategic partnership, our customers benefit from:
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Professional business training and workshops</span>
+                  <span>Comprehensive business advisory services including strategy development and market analysis</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Business mentorship from industry experts</span>
+                  <span>Expert financial management and accounting services tailored for African businesses</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Tax advisory and compliance services</span>
+                  <span>Tax compliance and regulatory advisory services across multiple African jurisdictions</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Networking opportunities with other businesses</span>
+                  <span>Business process optimization and operational efficiency consulting</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Access to funding and investment opportunities</span>
+                  <span>Technology integration and digital transformation solutions</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-accurate-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Digital transformation consulting services</span>
+                  <span>Access to a network of business professionals and industry experts across Africa</span>
                 </li>
               </ul>
               <Button size="lg" asChild>
-                <a href="https://rwkafrica.com" target="_blank" rel="noopener noreferrer">Learn About RWK Africa</a>
+                <a href="https://www.rwkafrica.com" target="_blank" rel="noopener noreferrer">Explore RWK Africa Services</a>
               </Button>
             </div>
           </div>

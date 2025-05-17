@@ -48,26 +48,22 @@ const Navbar = () => {
   // These are the original nav items, restructured for dropdowns
   const navStructure = [
     { name: "Home", path: "/", dropdown: false },
+    {name: "About Us",  path: "/about", dropdown: false,},
     { name: "Features", path: "/features", dropdown: false },
-    { name: "Demo", path: "/demo", dropdown: false },
     { name: "Pricing", path: "/pricing", dropdown: false },
-    {
-      name: "About Us",
-      dropdown: true,
-      items: [
-        { name: "About Us", path: "/about" },
-        { name: "Testimonials", path: "/testimonials" },
-      ]
-    },
+    { name: "Demo", path: "/demo", dropdown: false },
+    { name: "Contact Us", path: "/contact" , dropdown: false},
+  
     {
       name: "Resources",
       dropdown: true,
       items: [
         { name: "Blog", path: "/blog" },
+        { name: "Testimonials", path: "/testimonials" },
 
       ]
     },
-    { name: "Contact Us", path: "/contact" },
+   
   ];
 
   const isActive = (path: string) => {
@@ -80,6 +76,28 @@ const Navbar = () => {
   };
 
   return (
+    <>
+      {/* Enhanced Decorative Top Section */}
+      <div className="relative">
+        {/* Main gradient bar */}
+        <div className="h-3 bg-gradient-to-r from-accurate-purple-200 via-accurate-purple-100 to-accurate-blue-100 relative overflow-hidden">
+          {/* Subtle pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1))`,
+              backgroundSize: '20px 20px'
+            }}></div>
+          </div>
+          
+          {/* Very subtle shimmer */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+        </div>
+        
+        {/* Subtle corner accents with gradient */}
+        <div className="absolute -left-1 top-0 w-2 h-2 bg-gradient-to-br from-accurate-purple-200 to-accurate-purple-100 transform rotate-45"></div>
+        <div className="absolute -right-1 top-0 w-2 h-2 bg-gradient-to-br from-accurate-blue-100 to-accurate-purple-100 transform rotate-45"></div>
+      </div>
+      
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-200",
@@ -88,10 +106,10 @@ const Navbar = () => {
           : "bg-transparent py-4"
       )}
     >
-      <div className="container flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="/lovable-uploads/879e1aa7-83d9-460f-9d35-b0f9949c3ceb.png"
+              src="/images/logo.png"
             alt="MyAccurate Books Logo"
             className="h-12 transition-transform hover:scale-105"
           />
@@ -99,31 +117,31 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation with Dropdowns */}
-        <NavigationMenu className="hidden md:flex">
+          <NavigationMenu className="hidden md:flex relative">
           <NavigationMenuList>
             {navStructure.map((item) => (
               item.dropdown ? (
-                <NavigationMenuItem key={item.name}>
+                  <NavigationMenuItem key={item.name} className="relative">
                   <NavigationMenuTrigger
                     className={cn(
-                      "transition-colors hover:bg-gray-100 hover:text-blue-700",
+                        "transition-colors hover:bg-accurate-purple-100 hover:text-accurate-purple-500",
                       isDropdownActive(item.items)
-                        ? "bg-blue-50 text-blue-700"
+                          ? "bg-accurate-purple-50 text-accurate-purple-500"
                         : "text-gray-700"
                     )}
                   >
                     {item.name}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                    <NavigationMenuContent className="absolute left-0 mt-2">
                     <ul className="grid w-[200px] gap-1 p-2">
                       {item.items.map((subItem) => (
                         <li key={subItem.name}>
                           <Link
                             to={subItem.path}
                             className={cn(
-                              "block select-none rounded-md p-2 text-sm outline-none transition-colors hover:bg-blue-100 hover:text-blue-700",
+                                "block select-none rounded-md p-2 text-sm outline-none transition-colors hover:bg-accurate-purple-100 hover:text-accurate-purple-500",
                               isActive(subItem.path)
-                                ? "bg-blue-50 text-blue-700"
+                                  ? "bg-accurate-purple-50 text-accurate-purple-500"
                                 : "text-gray-700"
                             )}
                           >
@@ -136,19 +154,19 @@ const Navbar = () => {
                 </NavigationMenuItem>
               ) : (
                 <NavigationMenuItem key={item.name}>
-                  <Link to={item.path}>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                         "transition-colors hover:bg-gray-100 hover:text-blue-700",
-                        isActive(item.path)
-                          ? "bg-blue-50 text-blue-700"
-                          : "text-gray-700"
-                      )}
-                    >
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                        "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accurate-purple-100 hover:text-accurate-purple-500 focus:bg-accurate-purple-100 focus:text-accurate-purple-500 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accurate-purple-100/50 data-[state=open]:bg-accurate-purple-100/50",
+                      isActive(item.path)
+                          ? "bg-accurate-purple-50 text-accurate-purple-500"
+                        : "text-gray-700"
+                    )}
+                  >
+                    <Link to={item.path}>
                       {item.name}
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               )
             ))}
@@ -158,17 +176,29 @@ const Navbar = () => {
         {/* CTA Button */}
         
         <div className="flex items-center gap-4">
+            <a
+              href="https://play.google.com/store/apps/details?id=core.rwk.myaccuratebooks&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:flex items-center hover:opacity-90 transition-opacity"
+            >
+              <img
+                src="/images/gplay.png"
+                alt="Get it on Google Play"
+                className="h-[34px] w-[120px] object-contain"
+              />
+            </a>
           <Button
             asChild
             variant="outline"
-            className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all hover:bg-blue-600 hover:text-white border-blue-600 text-blue-600"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all hover:bg-accurate-purple-500 hover:text-white border-accurate-purple-600 text-accurate-purple-600"
           >
             <a href="https://app.myaccuratebook.com/login" target="_blank" rel="noopener noreferrer">
               Log In
             </a>
           </Button>
-          <Button className="w-full py-2.5 text-[15px] font-medium text-white bg-blue-600 hover:bg-blue-700 text-white">
-                  <a href="/pricing" target="_blank" rel="noopener noreferrer" className="w-full h-full block">
+            <Button className="w-full py-2.5 text-[15px] font-medium bg-blue-600 hover:bg-blue-700 text-white">
+                    <a href="/pricing" target="_blank" rel="noopener noreferrer" className="w-full h-full block text-white">
                     Get Started
                   </a>
                 </Button>
@@ -186,7 +216,7 @@ const Navbar = () => {
             <div className="flex justify-between items-center p-4 border-b">
               <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                 <img
-                  src="/lovable-uploads/879e1aa7-83d9-460f-9d35-b0f9949c3ceb.png"
+                    src="/images/logo.png"
                   alt="MyAccurate Books Logo"
                   className="h-10"
                 />
@@ -205,7 +235,7 @@ const Navbar = () => {
                           className={cn(
                             "justify-between w-full px-4 py-3 text-[15px] font-medium rounded-lg transition-colors hover:bg-gray-50",
                             isDropdownActive(item.items)
-                              ? "bg-blue-50 text-blue-700"
+                                ? "bg-accurate-purple-50 text-accurate-purple-500"
                               : "text-gray-700"
                           )}
                         >
@@ -213,7 +243,7 @@ const Navbar = () => {
                           <ChevronDown className="h-4 w-4 ml-2" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="start" className="w-[280px] mt-1">
+                        <DropdownMenuContent align="start" className="w-[280px] mt-1 absolute left-0 z-50">
                         {item.items.map((subItem) => (
                           <DropdownMenuItem key={subItem.name} asChild>
                             <Link
@@ -221,7 +251,7 @@ const Navbar = () => {
                               className={cn(
                                 "w-full px-4 py-2.5 text-[15px] rounded-md transition-colors hover:bg-gray-50",
                                 isActive(subItem.path)
-                                  ? "bg-blue-50 text-blue-700 font-medium"
+                                    ? "bg-accurate-purple-50 text-accurate-purple-500 font-medium"
                                   : "text-gray-700"
                               )}
                               onClick={() => setIsOpen(false)}
@@ -240,7 +270,7 @@ const Navbar = () => {
                     className={cn(
                       "px-4 py-3 text-[15px] font-medium rounded-lg transition-colors hover:bg-gray-50",
                       isActive(item.path)
-                        ? "bg-blue-50 text-blue-700"
+                          ? "bg-accurate-purple-50 text-accurate-purple-500"
                         : "text-gray-700"
                     )}
                     onClick={() => setIsOpen(false)}
@@ -269,10 +299,8 @@ const Navbar = () => {
       </Sheet>
         </div>
       </div>
-
-      
-      
-    </header >
+      </header>
+    </>
   );
 };
 

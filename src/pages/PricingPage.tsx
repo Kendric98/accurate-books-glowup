@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -6,24 +5,22 @@ import { Link } from "react-router-dom";
 import { Check, Shield, X } from "lucide-react";
 
 const PricingPage = () => {
-  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
-
-  const toggleBillingCycle = () => {
-    setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly");
-  };
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "quarterly" | "semi-annual" | "annual">("monthly");
 
   const pricingPlans = [
     {
       name: "Basic",
       description: "Start for free and accept payments with ease",
       monthlyPrice: 0,
-      yearlyPrice: 0,
+      quarterlyPrice: 0,
+      semiAnnualPrice: 0,
+      annualPrice: 0,
       features: [
-      "1 user",
-      "10 invoices/month",
-      "Mpesa & POS enabled",
-      "Wallet module",
-      "Community support"
+        "1 user",
+        "10 invoices/month",
+        "Mpesa & POS enabled",
+        "Wallet module",
+        "Community support"
       ],
       mostPopular: false,
       cta: "Get Started",
@@ -32,15 +29,17 @@ const PricingPage = () => {
     {
       name: "Standard",
       description: "Level up with unlimited invoicing, more users, and smart tools",
-      monthlyPrice: 1500,
-      yearlyPrice: 15300, // 15% discount on yearly
+      monthlyPrice: 500,
+      quarterlyPrice: 1450, // 7% discount (500 * 3 * 0.93)
+      semiAnnualPrice: 2600, // 13% discount (500 * 6 * 0.87)
+      annualPrice: 5100, // 15% discount (500 * 12 * 0.85)
       features: [
-      "5 users",
-      "Unlimited invoices",
-      "Mpesa, POS & bank payments",
-      "Wallet module",
-      "Priority email support",
-      "1-month FREE trial"
+        "5 users",
+        "Unlimited invoices",
+        "Mpesa, POS & bank payments",
+        "Wallet module",
+        "Priority email support",
+        "1-month FREE trial"
       ],
       mostPopular: true,
       cta: "Start Free Trial",
@@ -49,42 +48,90 @@ const PricingPage = () => {
     {
       name: "Gold",
       description: "For growing businesses that need more than accounting",
-      monthlyPrice: 3000,
-      yearlyPrice: 30000, // 15% discount on yearly
+      monthlyPrice: 750,
+      quarterlyPrice: 2200, // 7% discount (750 * 3 * 0.93)
+      semiAnnualPrice: 4000, // 13% discount (750 * 6 * 0.87)
+      annualPrice: 7700, // 15% discount (750 * 12 * 0.85)
       features: [
-      "20 users",
-      "Unlimited invoices",
-      "Mpesa, POS, bank payments",
-      "Wallet module",
-      "Payroll module",
-      "Business management module",
-      "Multi-Branch support",
-      "Priority chat support"
+        "20 users",
+        "Unlimited invoices",
+        "Mpesa, POS, bank payments",
+        "Wallet module",
+        "Payroll module",
+        "Business management module",
+        "Multi-Branch support",
+        "Priority chat support"
       ],
       mostPopular: false,
-      cta: "Upgrade to Pro",
-      disabled: true // <-- This button will be greyed out
+      cta: "Upgrade to Gold",
+      disabled: true
     },
     {
       name: "Enterprise",
       description: "Tailored solutions for large or complex businesses",
       monthlyPrice: null,
-      yearlyPrice: null,
+      quarterlyPrice: null,
+      semiAnnualPrice: null,
+      annualPrice: null,
       customPrice: "Custom",
       features: [
-      "Unlimited users",
-      "Unlimited invoices",
-      "Mpesa, POS, bank payments",
-      "Wallet, Payroll, Business Management modules",
-      "Multi-location support",
-      "API access",
-      "Dedicated account manager"
+        "Unlimited users",
+        "Unlimited invoices",
+        "Mpesa, POS, bank payments",
+        "Wallet, Payroll, Business Management modules",
+        "Multi-Branch support",
+        "API access",
+        "Dedicated account manager"
       ],
       mostPopular: false,
       cta: "Contact Sales",
       disabled: true
     }
-    ];
+  ];
+
+  const getPrice = (plan: any) => {
+    if (plan.customPrice) return plan.customPrice;
+    switch (billingPeriod) {
+      case "monthly":
+        return plan.monthlyPrice;
+      case "quarterly":
+        return plan.quarterlyPrice;
+      case "semi-annual":
+        return plan.semiAnnualPrice;
+      case "annual":
+        return plan.annualPrice;
+      default:
+        return plan.monthlyPrice;
+    }
+  };
+
+  const getPeriodLabel = () => {
+    switch (billingPeriod) {
+      case "monthly":
+        return "month";
+      case "quarterly":
+        return "quarter";
+      case "semi-annual":
+        return "6 months";
+      case "annual":
+        return "year";
+      default:
+        return "month";
+    }
+  };
+
+  const getDiscount = () => {
+    switch (billingPeriod) {
+      case "quarterly":
+        return "7%";
+      case "semi-annual":
+        return "13%";
+      case "annual":
+        return "15%";
+      default:
+        return null;
+    }
+  };
 
   return (
     <div>
@@ -103,27 +150,36 @@ const PricingPage = () => {
       {/* Pricing Toggle */}
       <section className="py-12 bg-white">
         <div className="container">
-          <div className="flex justify-center items-center space-x-4 mb-12">
-            <span className={`text-lg ${billingCycle === "monthly" ? "font-semibold text-blue-600" : "text-gray-600"}`}>
-              Monthly Billing
-            </span>
-            <button onClick={toggleBillingCycle} className="relative inline-flex h-6 w-12 items-center rounded-full bg-gray-200">
-              <span className="sr-only">Toggle billing cycle</span>
-              <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-md transition ${billingCycle === "yearly" ? "translate-x-6 shadow-lg" : "translate-x-1"}`}></span>
-            </button>
-            <span className={`text-lg ${billingCycle === "yearly" ? "font-semibold text-blue-600" : "text-gray-600"}`}>
-              Yearly Billing <span className="text-sm bg-sunset-100 text-sunset-700 font-medium px-2 py-0.5 rounded-full">Save 15%</span>
-            </span>
+          <div className="flex flex-wrap justify-center items-center gap-4 mb-12">
+            {["monthly", "quarterly", "semi-annual", "annual"].map((period) => (
+              <button
+                key={period}
+                onClick={() => setBillingPeriod(period as any)}
+                className={`px-6 py-3 rounded-full transition-all ${
+                  billingPeriod === period
+                    ? "bg-blue-600 text-white shadow-lg scale-105"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                <span className="capitalize">{period}</span>
+                {getDiscount() && billingPeriod === period && (
+                  <span className="ml-2 text-sm bg-white/20 px-2 py-0.5 rounded-full">
+                    Save {getDiscount()}
+                  </span>
+                )}
+              </button>
+            ))}
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {pricingPlans.map(plan => (
               <div
                 key={plan.name}
-                className={`relative rounded-xl border ${plan.mostPopular
+                className={`relative rounded-xl border ${
+                  plan.mostPopular
                     ? "border-blue-500 shadow-xl ring-2 ring-blue-300 bg-gradient-to-b from-white to-blue-50 animate-pulse-slow transform hover:scale-105 transition-all duration-500"
                     : "border-gray-200 hover:border-blue-300 hover:shadow-lg"
-                  } bg-white p-6 animate-on-scroll transition-all duration-300`}
+                } bg-white p-6 animate-on-scroll transition-all duration-300`}
               >
                 {plan.mostPopular && (
                   <div className="absolute -top-4 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 py-1 text-center text-sm font-semibold text-white shadow-md animate-bounce-subtle">
@@ -139,13 +195,13 @@ const PricingPage = () => {
                     <p className="text-3xl font-bold text-blue-700">{plan.customPrice}</p>
                   ) : (
                     <p className={`text-3xl font-bold ${plan.mostPopular ? "text-blue-700" : "text-blue-700"}`}>
-                      KES {billingCycle === "monthly" ? plan.monthlyPrice?.toLocaleString() : plan.yearlyPrice?.toLocaleString()}
+                      KES {getPrice(plan)?.toLocaleString()}
                       {plan.monthlyPrice === 0 && <span className="text-lg text-gray-500 font-normal"> Free</span>}
                     </p>
                   )}
                   {plan.monthlyPrice !== null && plan.monthlyPrice > 0 && (
                     <p className="text-gray-600 mt-1">
-                      per {billingCycle === "monthly" ? "month" : "year"}
+                      per {getPeriodLabel()}
                     </p>
                   )}
                 </div>
@@ -164,7 +220,7 @@ const PricingPage = () => {
                   variant={plan.mostPopular || plan.name === "Free" ? "default" : "outline"}
                   asChild
                 >
-                  <Link to="/contact">{plan.cta}</Link>
+                  <Link to="https://app.myaccuratebook.com/register" target="_blank">{plan.cta}</Link>
                 </Button>
               </div>
             ))}

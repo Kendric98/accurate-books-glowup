@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 const FeaturesTabs = () => {
@@ -48,42 +47,66 @@ const FeaturesTabs = () => {
   return (
     <>
       {/* Features Navigation Tabs */}
-      <section className="py-12 bg-white sticky top-16 z-40 shadow-sm">
+      <section className="py-4 bg-white sticky top-16 z-40 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto pb-2 space-x-2">
+          <div className="flex overflow-x-auto scrollbar-hide space-x-1">
             <button
               aria-selected={activeTab === 'all-features'}
-              className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'all-features' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+              className={`tab-button flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeTab === 'all-features' 
+                ? 'bg-primary text-white shadow-sm' 
+                : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+              }`}
               onClick={() => handleTabChange('all-features')}
             >
               All Features
             </button>
             <button 
-              className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'accounting' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+              className={`tab-button flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeTab === 'accounting' 
+                ? 'bg-primary text-white shadow-sm' 
+                : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+              }`}
               onClick={() => handleTabChange('accounting')}
             >
               <i className="fas fa-calculator mr-2"></i> Accounting
             </button>
             <button 
-              className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'pos' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+              className={`tab-button flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeTab === 'pos' 
+                ? 'bg-primary text-white shadow-sm' 
+                : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+              }`}
               onClick={() => handleTabChange('pos')}
             >
               <i className="fas fa-cash-register mr-2"></i> POS System
             </button>
             <button 
-              className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'payments' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+              className={`tab-button flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeTab === 'payments' 
+                ? 'bg-primary text-white shadow-sm' 
+                : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+              }`}
               onClick={() => handleTabChange('payments')}
             >
               <i className="fas fa-credit-card mr-2"></i> Payments
             </button>
             <button 
-              className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'management' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+              className={`tab-button flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeTab === 'management' 
+                ? 'bg-primary text-white shadow-sm' 
+                : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+              }`}
               onClick={() => handleTabChange('management')}
             >
               <i className="fas fa-users-cog mr-2"></i> Management
             </button>
             <button 
-              className={`tab-button flex-shrink-0 px-6 py-3 rounded-lg font-medium ${activeTab === 'roadmap' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+              className={`tab-button flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeTab === 'roadmap' 
+                ? 'bg-primary text-white shadow-sm' 
+                : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+              }`}
               onClick={() => handleTabChange('roadmap')}
             >
               <i className="fas fa-map mr-2"></i> Roadmap
@@ -110,7 +133,7 @@ const FeaturesTabs = () => {
                 <h3 className="text-xl font-bold text-dark mb-3">Financial Dashboard</h3>
                 <p className="text-gray-600 mb-4">Get a real-time overview of your business finances with our intuitive dashboard. Track income, expenses, and profitability at a glance.</p>
                 <a href="#" className="text-primary font-medium inline-flex items-center">
-                  Learn more
+                  
                   <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
               </div>
@@ -123,7 +146,7 @@ const FeaturesTabs = () => {
                 <h3 className="text-xl font-bold text-dark mb-3">POS Integration</h3>
                 <p className="text-gray-600 mb-4">Seamless point-of-sale integration that syncs with your accounting automatically. Perfect for retail and service businesses.</p>
                 <a href="#" className="text-primary font-medium inline-flex items-center">
-                  Learn more
+                  
                   <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
               </div>
@@ -136,7 +159,7 @@ const FeaturesTabs = () => {
                 <h3 className="text-xl font-bold text-dark mb-3">Customer Management</h3>
                 <p className="text-gray-600 mb-4">Track customer interactions, invoices, and payment history in one place. Build better relationships with your clients.</p>
                 <a href="#" className="text-primary font-medium inline-flex items-center">
-                  Learn more
+                 
                   <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
               </div>
@@ -149,7 +172,7 @@ const FeaturesTabs = () => {
                 <h3 className="text-xl font-bold text-dark mb-3">Payment Processing</h3>
                 <p className="text-gray-600 mb-4">Accept M-Pesa, credit cards, bank transfers, and cash payments. Integrated with major payment processors for hassle-free transactions.</p>
                 <a href="#" className="text-primary font-medium inline-flex items-center">
-                  Learn more
+                  
                   <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
               </div>
@@ -162,7 +185,7 @@ const FeaturesTabs = () => {
                 <h3 className="text-xl font-bold text-dark mb-3">Multi-User Access</h3>
                 <p className="text-gray-600 mb-4">Grant different access levels to your team members. Perfect for businesses with accountants, bookkeepers, or multiple locations.</p>
                 <a href="#" className="text-primary font-medium inline-flex items-center">
-                  Learn more
+                  
                   <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
               </div>
@@ -175,7 +198,7 @@ const FeaturesTabs = () => {
                 <h3 className="text-xl font-bold text-dark mb-3">Automated Invoicing</h3>
                 <p className="text-gray-600 mb-4">Create professional invoices in seconds. Set up recurring invoices and automatic payment reminders to improve cash flow.</p>
                 <a href="#" className="text-primary font-medium inline-flex items-center">
-                  Learn more
+                  
                   <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
               </div>
@@ -230,7 +253,7 @@ const FeaturesTabs = () => {
                 </div>
               </div>
               <div className="relative">
-                <img src="https://images.unsplash.com/photo-1555774698-0f77e70ac3fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mobile and desktop access" className="rounded-xl shadow-xl" />
+                <img src="/public/images/phone.jpg" alt="Mobile and desktop access" className="rounded-xl shadow-xl" />
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
                   <div className="flex items-center">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-12" />
@@ -296,7 +319,7 @@ const FeaturesTabs = () => {
                   <p className="text-gray-600">Our intuitive interface guides you through every step, making professional accounting accessible to everyone.</p>
                 </div>
                 <div className="md:w-1/2 text-center md:text-right">
-                  <a href="pricing.html" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700">
+                  <a href="/pricing" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700">
                     Try It Free
                     <i className="fas fa-arrow-right ml-2"></i>
                   </a>
@@ -373,14 +396,14 @@ const FeaturesTabs = () => {
                 </div>
                 
                 <div className="mt-10">
-                  <a href="contact.html" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700">
+                  <a href="/demo" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700">
                     Request POS Demo
                     <i className="fas fa-arrow-right ml-2"></i>
                   </a>
                 </div>
               </div>
               <div className="order-1 lg:order-2">
-                <img src="https://images.unsplash.com/photo-1600086811516-1a8d0e43b6f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="POS system" className="rounded-xl shadow-xl" />
+                <img src="/public/images/comp.jpg" alt="POS system" className="rounded-xl shadow-xl" />
               </div>
             </div>
           </div>
@@ -400,7 +423,7 @@ const FeaturesTabs = () => {
               {/* Payment Method 1 */}
               <div className="bg-white p-8 rounded-xl shadow-md text-center">
                 <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" alt="M-Pesa" className="h-10" />
+                  <img src="/images/mpesa.png" alt="M-Pesa" className="h-10" />
                 </div>
                 <h3 className="text-xl font-bold text-dark mb-3">M-Pesa Integration</h3>
                 <p className="text-gray-600">Accept M-Pesa payments directly in your POS or invoices. Payments are automatically recorded in your accounting.</p>
@@ -409,6 +432,7 @@ const FeaturesTabs = () => {
               {/* Payment Method 2 */}
               <div className="bg-white p-8 rounded-xl shadow-md text-center">
                 <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <img src="/images/card.png" alt="Card" className="h-10" />
                   <i className="fas fa-credit-card text-primary text-3xl"></i>
                 </div>
                 <h3 className="text-xl font-bold text-dark mb-3">Card Payments</h3>
@@ -418,6 +442,7 @@ const FeaturesTabs = () => {
               {/* Payment Method 3 */}
               <div className="bg-white p-8 rounded-xl shadow-md text-center">
                 <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <img src="/images/bank.png" alt="Card" className="h-10" />
                   <i className="fas fa-university text-primary text-3xl"></i>
                 </div>
                 <h3 className="text-xl font-bold text-dark mb-3">Bank Transfers</h3>
@@ -425,14 +450,14 @@ const FeaturesTabs = () => {
               </div>
             </div>
             
-            <div className="mt-12 bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto">
+            <div className="mt-12 bg-white rounded-xl shadow-md p-8">
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-2/3 mb-6 md:mb-0">
                   <h3 className="text-2xl font-bold text-dark mb-2">Secure Payment Processing</h3>
                   <p className="text-gray-600">All payment methods are processed with bank-level security and PCI compliance to protect your business and customers.</p>
                 </div>
                 <div className="md:w-1/3 text-center md:text-right">
-                  <a href="contact.html" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700">
+                  <a href="/pricing" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700">
                     Setup Payments
                   </a>
                 </div>
@@ -545,78 +570,137 @@ const FeaturesTabs = () => {
               
               {/* Timeline items */}
               <div className="space-y-12">
+               
+
                 {/* Roadmap Item 1 */}
                 <div className="relative md:flex items-center">
                   <div className="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right">
                     <div className="bg-white p-6 rounded-xl shadow-md">
                       <div className="flex items-center justify-center md:justify-end mb-2">
-                        <span className="bg-primary text-white text-sm font-semibold px-3 py-1 rounded-full">In Development</span>
+                        <span className="bg-primary text-white text-sm font-semibold px-3 py-1 rounded-full">Completed</span>
                       </div>
-                      <h3 className="text-xl font-bold text-dark mb-2">Payroll Management</h3>
-                      <p className="text-gray-600">Automate salary calculations, tax deductions, and payslip generation for your employees.</p>
+                      <h3 className="text-xl font-bold text-dark mb-2">Initial Concept</h3>
+                      <p className="text-gray-600">Identified opportunity to provide MSMEs with comprehensive business management software.</p>
                     </div>
                   </div>
                   <div className="hidden md:block absolute left-1/2 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2"></div>
                   <div className="md:w-1/2 md:pl-16">
                     <div className="text-gray-500 text-sm md:text-base">
-                      <p>Q3 2023</p>
+                      <p>Q2 2024</p>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Roadmap Item 2 */}
                 <div className="relative md:flex items-center">
                   <div className="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right">
                     <div className="text-gray-500 text-sm md:text-base">
-                      <p>Q4 2023</p>
+                      <p>Q3 2024</p>
                     </div>
                   </div>
                   <div className="hidden md:block absolute left-1/2 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2"></div>
                   <div className="md:w-1/2 md:pl-16">
                     <div className="bg-white p-6 rounded-xl shadow-md">
                       <div className="flex items-center mb-2">
-                        <span className="bg-secondary text-white text-sm font-semibold px-3 py-1 rounded-full">Planned</span>
+                        <span className="bg-primary text-white text-sm font-semibold px-3 py-1 rounded-full">Completed</span>
                       </div>
-                      <h3 className="text-xl font-bold text-dark mb-2">Petty Cash Management</h3>
-                      <p className="text-gray-600">Track and manage petty cash expenses with digital approvals and automatic reconciliation.</p>
+                      <h3 className="text-xl font-bold text-dark mb-2">Accounting Module</h3>
+                      <p className="text-gray-600">Development of core accounting and bookkeeping functionality for basic business needs.</p>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Roadmap Item 3 */}
                 <div className="relative md:flex items-center">
                   <div className="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right">
                     <div className="bg-white p-6 rounded-xl shadow-md">
                       <div className="flex items-center justify-center md:justify-end mb-2">
-                        <span className="bg-accent text-white text-sm font-semibold px-3 py-1 rounded-full">Planned</span>
+                        <span className="bg-primary text-white text-sm font-semibold px-3 py-1 rounded-full">Completed</span>
                       </div>
-                      <h3 className="text-xl font-bold text-dark mb-2">Business Analytics</h3>
-                      <p className="text-gray-600">Advanced reporting and predictive analytics to help you make data-driven business decisions.</p>
+                      <h3 className="text-xl font-bold text-dark mb-2">MVP Launch</h3>
+                      <p className="text-gray-600">Successfully launched our Minimum Viable Product at the Skill Up Launch event.</p>
                     </div>
                   </div>
                   <div className="hidden md:block absolute left-1/2 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2"></div>
                   <div className="md:w-1/2 md:pl-16">
                     <div className="text-gray-500 text-sm md:text-base">
-                      <p>Q1 2024</p>
+                      <p>Q4 2024</p>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Roadmap Item 4 */}
                 <div className="relative md:flex items-center">
                   <div className="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right">
                     <div className="text-gray-500 text-sm md:text-base">
-                      <p>Q2 2024</p>
+                      <p>Q1 2025</p>
                     </div>
                   </div>
                   <div className="hidden md:block absolute left-1/2 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2"></div>
                   <div className="md:w-1/2 md:pl-16">
                     <div className="bg-white p-6 rounded-xl shadow-md">
                       <div className="flex items-center mb-2">
+                        <span className="bg-primary text-white text-sm font-semibold px-3 py-1 rounded-full">Completed</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-dark mb-2">POS Module</h3>
+                      <p className="text-gray-600">Point of Sale system integration for seamless sales and inventory management.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Roadmap Item 5 */}
+                <div className="relative md:flex items-center">
+                  <div className="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right">
+                    <div className="bg-white p-6 rounded-xl shadow-md">
+                      <div className="flex items-center justify-center md:justify-end mb-2">
+                        <span className="bg-secondary text-white text-sm font-semibold px-3 py-1 rounded-full">In Progress</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-dark mb-2">E-Wallet & Petty Cash</h3>
+                      <p className="text-gray-600">Digital wallet integration and comprehensive petty cash management system.</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block absolute left-1/2 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2"></div>
+                  <div className="md:w-1/2 md:pl-16">
+                    <div className="text-gray-500 text-sm md:text-base">
+                      <p>Q2 2025</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Roadmap Item 6 */}
+                <div className="relative md:flex items-center">
+                  <div className="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right">
+                    <div className="text-gray-500 text-sm md:text-base">
+                      <p>Q3 2025</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block absolute left-1/2 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2"></div>
+                  <div className="md:w-1/2 md:pl-16">
+                    <div className="bg-white p-6 rounded-xl shadow-md">
+                      <div className="flex items-center mb-2">
+                        <span className="bg-accent text-white text-sm font-semibold px-3 py-1 rounded-full">Planned</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-dark mb-2">Payroll Management</h3>
+                      <p className="text-gray-600">Complete payroll system with automated calculations and statutory deductions.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Roadmap Item 7 */}
+                <div className="relative md:flex items-center">
+                  <div className="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right">
+                    <div className="bg-white p-6 rounded-xl shadow-md">
+                      <div className="flex items-center justify-center md:justify-end mb-2">
                         <span className="bg-gray-400 text-white text-sm font-semibold px-3 py-1 rounded-full">Future</span>
                       </div>
-                      <h3 className="text-xl font-bold text-dark mb-2">E-commerce Integration</h3>
-                      <p className="text-gray-600">Connect your online store to automatically sync orders, inventory, and payments.</p>
+                      <h3 className="text-xl font-bold text-dark mb-2">Business Management</h3>
+                      <p className="text-gray-600">Comprehensive business management tools including analytics and reporting.</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block absolute left-1/2 w-6 h-6 bg-primary rounded-full transform -translate-x-1/2"></div>
+                  <div className="md:w-1/2 md:pl-16">
+                    <div className="text-gray-500 text-sm md:text-base">
+                      <p>Q4 2025</p>
                     </div>
                   </div>
                 </div>
@@ -625,7 +709,7 @@ const FeaturesTabs = () => {
             
             <div className="mt-16 text-center">
               <p className="text-gray-600 mb-6">Have feature suggestions? We'd love to hear from you!</p>
-              <a href="contact.html" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSemU1hTZ1zpgGzI35T49K3oZChFzvQsyFzs1IF-IP0g8Q6UpA/viewform?usp=header" className="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700" target="_blank" rel="noopener noreferrer">
                 Suggest a Feature
                 <i className="fas fa-arrow-right ml-2"></i>
               </a>
